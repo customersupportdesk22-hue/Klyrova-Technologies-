@@ -62,3 +62,22 @@
 @media(max-width:900px){.hero{gap:24px;padding-left:6vw;padding-right:6vw}.hero h1{font-size:clamp(43px,6vw,58px)}.global-hero-art{height:420px}}
 @media(max-width:680px){.site-header{height:72px}.hero{padding:66px 24px 55px;gap:28px}.hero h1{font-size:43px;letter-spacing:-2.4px}.global-hero-art{height:340px;border-radius:20px}.hero-global-label{left:13px;bottom:13px;padding:11px 13px}.hero-floating-card{right:12px;top:12px;font-size:9px}.global-studio{padding-top:75px;padding-bottom:75px}.studio-photo{height:270px}.project-visual{height:215px}.contact-form{padding:22px}}
 @media(prefers-reduced-motion:reduce){.hero-world-image{animation:none}.studio-photo img{transition:none}}
+
+
+/* Keep the global image as a supporting hero visual, never a full-screen banner. */
+.hero{min-height:0;padding-top:76px;padding-bottom:76px}
+.global-hero-art{width:100%;max-width:510px;height:360px;justify-self:end;border-radius:24px}
+.hero-world-image{object-position:center;animation-duration:30s}
+@media(max-width:900px){
+  .hero{padding-top:68px;padding-bottom:68px}
+  .global-hero-art{max-width:100%;height:310px}
+}
+@media(max-width:680px){
+  .hero{padding-top:48px;padding-bottom:42px;gap:22px}
+  .global-hero-art{height:205px;max-height:205px;border-radius:17px;margin-top:2px}
+  .hero-global-label{left:10px;bottom:10px;padding:9px 11px;gap:8px}
+  .hero-global-label .globe-spin{font-size:25px;width:30px;height:30px}
+  .hero-global-label b{font-size:11px}
+  .hero-global-label small{font-size:9px}
+  .hero-floating-card{right:10px;top:10px;padding:9px 11px;font-size:8px}
+}
