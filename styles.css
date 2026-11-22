@@ -126,3 +126,6 @@
 .launch-offer p{font-size:11px;line-height:1.75;color:#d3e0f2;margin:8px 0 0}
 .launch-offer strong{color:#fff}
 .selectable-price-card{background:#fff;border:1px solid #e4eaf2;padding:22px;border-radius:7px}
+
+/* Klyrova brand logo */
+.brand{gap:0}.brand-logo{display:block;width:clamp(190px,21vw,250px);height:auto;max-height:58px;object-fit:contain}.footer .brand-logo{width:220px;max-width:100%}@media(max-width:640px){.brand-logo{width:174px;max-height:48px}.footer .brand-logo{width:205px}}
