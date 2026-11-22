@@ -336,3 +336,9 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .review-form-status{margin-top:12px}
 .review-honey{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important}
 @media(max-width:680px){.country-choice{padding:11px 9px;gap:7px;font-size:10px}.country-choice i{font-size:19px}.country-choice b{font-size:9px}.review-form-panel{padding:20px 15px}.review-form{grid-template-columns:1fr;gap:8px}.review-form>label[for="review-message"],.review-form>textarea,.review-consent,.review-submit,.review-form-privacy{grid-column:1}.review-form-heading h4{font-size:21px}.review-slider-head{align-items:flex-start;flex-direction:column;gap:5px}}
+
+
+/* Keep the feedback form closed until a visitor chooses to open it. */
+.review-form-panel[hidden]{display:none!important}
+.review-open-button{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:18px;border:0;cursor:pointer}
+.review-open-button.is-open{margin-bottom:0}
