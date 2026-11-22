@@ -267,3 +267,9 @@
 .integrations-bottom .button{white-space:nowrap;flex:none}
 @media(max-width:900px){.home-integration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.home-integrations{padding:76px 20px}.home-integration-grid{grid-template-columns:1fr;gap:11px}.home-integration-card{min-height:0;padding:22px}.integrations-bottom{align-items:stretch;flex-direction:column;padding:20px}.integrations-bottom .button{width:100%}}
+
+
+/* Prevent the browser's default blue tap flash on touch devices */
+*,*::before,*::after{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
