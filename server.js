@@ -14,6 +14,7 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_FROM = process.env.RESEND_FROM;
 
 app.disable('x-powered-by');
+app.set('trust proxy', 1);
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: '20kb' }));
 app.use((req,res,next)=>{ if(['/server.js','/package.json','/.env.example'].includes(req.path)) return res.sendStatus(404); next(); });
@@ -92,27 +93,33 @@ app.get('/api/reviews',async(req,res)=>{
   }catch(error){console.error(error);res.status(500).json({error:'Unable to load reviews.'});}
 });
 app.get('/api/admin/reviews',adminOnly,async(req,res)=>{
-  const status=['pending','approved','rejected'].includes(req.query.status)?req.query.status:null;
-  const filter=status?{status}:{};
-  const docs=await reviews.find(filter,{projection:{name:1,email:1,country:1,dialCode:1,phone:1,rating:1,review:1,status:1,createdAt:1,approvedAt:1}}).sort({createdAt:-1}).limit(100).toArray();
-  res.json(docs.map(doc=>({...doc,_id:String(doc._id)})));
+  try{
+    const status=['pending','approved','rejected'].includes(req.query.status)?req.query.status:null;
+    const filter=status?{status}:{};
+    const docs=await reviews.find(filter,{projection:{name:1,email:1,country:1,dialCode:1,phone:1,rating:1,review:1,status:1,createdAt:1,approvedAt:1}}).sort({createdAt:-1}).limit(100).toArray();
+    res.json(docs.map(doc=>({...doc,_id:String(doc._id)})));
+  }catch(error){console.error(error);res.status(500).json({error:'Unable to load review records.'});}
 });
 app.patch('/api/admin/reviews/:id',adminOnly,async(req,res)=>{
-  const {status}=req.body||{};
-  if(!['approved','rejected'].includes(status)) return res.status(400).json({error:'Choose approve or reject.'});
-  if(!ObjectId.isValid(req.params.id)) return res.status(400).json({error:'Invalid review ID.'});
-  const update={status,updatedAt:new Date()};
-  if(status==='approved') update.approvedAt=new Date();
-  else update.approvedAt=null;
-  const result=await reviews.updateOne({_id:new ObjectId(req.params.id)},{$set:update});
-  if(!result.matchedCount) return res.status(404).json({error:'Review not found.'});
-  res.json({ok:true,status});
+  try{
+    const {status}=req.body||{};
+    if(!['approved','rejected'].includes(status)) return res.status(400).json({error:'Choose approve or reject.'});
+    if(!ObjectId.isValid(req.params.id)) return res.status(400).json({error:'Invalid review ID.'});
+    const update={status,updatedAt:new Date()};
+    if(status==='approved') update.approvedAt=new Date();
+    else update.approvedAt=null;
+    const result=await reviews.updateOne({_id:new ObjectId(req.params.id)},{$set:update});
+    if(!result.matchedCount) return res.status(404).json({error:'Review not found.'});
+    res.json({ok:true,status});
+  }catch(error){console.error(error);res.status(500).json({error:'Unable to update this review.'});}
 });
 app.delete('/api/admin/reviews/:id',adminOnly,async(req,res)=>{
-  if(!ObjectId.isValid(req.params.id)) return res.status(400).json({error:'Invalid review ID.'});
-  const result=await reviews.deleteOne({_id:new ObjectId(req.params.id)});
-  if(!result.deletedCount) return res.status(404).json({error:'Review not found.'});
-  res.json({ok:true});
+  try{
+    if(!ObjectId.isValid(req.params.id)) return res.status(400).json({error:'Invalid review ID.'});
+    const result=await reviews.deleteOne({_id:new ObjectId(req.params.id)});
+    if(!result.deletedCount) return res.status(404).json({error:'Review not found.'});
+    res.json({ok:true});
+  }catch(error){console.error(error);res.status(500).json({error:'Unable to delete this review.'});}
 });
 async function start(){
   if(!MONGODB_URI){console.error('MONGODB_URI is required.');process.exit(1);}
