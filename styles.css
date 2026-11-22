@@ -21,3 +21,44 @@
 @media(prefers-reduced-motion:reduce){.globe-spin,.aside-globe{animation:none}}
 
 .reveal-ready{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.reveal-ready.is-visible{opacity:1;transform:translateY(0)}@media(prefers-reduced-motion:reduce){.reveal-ready{opacity:1;transform:none;transition:none}}
+
+
+/* KLYROVA GLOBAL STUDIO — premium visual refresh */
+:root{--navy:#071329;--navy2:#0b1d3b;--blue:#397dff;--cyan:#54d9e6;--paper:#f4f7fb}
+.site-header{height:86px;padding-inline:max(7vw,26px);backdrop-filter:blur(18px);background:rgba(255,255,255,.94)}
+.brand-mark{width:39px;height:39px;border-radius:12px;box-shadow:0 8px 22px #2877ed35}
+.nav{gap:27px;font-size:12px}
+.nav .nav-cta{border-radius:30px;padding:14px 21px;background:linear-gradient(110deg,#1768e8,#0c2348);box-shadow:0 8px 22px #0b2a5725}
+.hero{min-height:690px;grid-template-columns:1fr 1fr;gap:4vw;padding:100px max(7vw,26px);background:radial-gradient(ellipse at 80% 45%,#dcecff 0,transparent 45%),linear-gradient(120deg,#fff 45%,#f4f8ff)}
+.hero h1{font-size:clamp(46px,5.3vw,76px);letter-spacing:-3.8px;line-height:1.04}
+.hero h1 span{background:linear-gradient(100deg,#2677f5,#14a9c4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-intro{font-size:16px;max-width:510px}
+.button{border-radius:30px;padding:17px 24px}
+.button-primary{background:linear-gradient(110deg,#2478f4,#0e9fca);box-shadow:0 12px 28px #2478f43a}
+.hero-note{font-weight:600;color:#53647e}
+.global-hero-art{height:510px;border-radius:28px;overflow:hidden;isolation:isolate;background:#071329;box-shadow:0 35px 90px #07132938;transform:translateZ(0)}
+.hero-world-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:worldDrift 22s ease-in-out infinite alternate}
+.hero-image-shade{position:absolute;inset:0;background:linear-gradient(145deg,rgba(4,16,38,.08),rgba(4,16,38,.22) 35%,rgba(4,16,38,.8))}
+.hero-global-label{position:absolute;left:25px;bottom:26px;display:flex;align-items:center;gap:13px;padding:15px 18px;border:1px solid #ffffff30;border-radius:14px;background:#071329b8;backdrop-filter:blur(14px);color:#fff}
+.hero-global-label .globe-spin{color:#5bd7f4;font-size:34px;width:40px;height:40px}
+.hero-global-label b,.hero-global-label small{display:block}.hero-global-label b{font:700 13px Manrope}.hero-global-label small{font-size:10px;color:#b7c9e2;margin-top:4px}
+.hero-floating-card{position:absolute;right:22px;top:22px;padding:13px 16px;border-radius:30px;background:#fff;color:#132747;box-shadow:0 12px 35px #0003;font-size:10px;font-weight:800}
+.global-studio{padding-top:120px;padding-bottom:120px;gap:7vw}
+.studio-photo{height:450px;border-radius:18px;box-shadow:0 25px 60px #0c25421b}
+.studio-photo img{transition:transform .8s ease}.studio-photo:hover img{transform:scale(1.045)}
+.studio-copy h2{font-size:clamp(35px,4.2vw,54px)}
+.section-heading h2{letter-spacing:-2.6px}
+.service-card{border-radius:14px;box-shadow:0 10px 35px #102d5708;transition:transform .25s ease,box-shadow .25s ease}
+.service-card:hover{transform:translateY(-7px);box-shadow:0 20px 45px #102d5718}
+.project-card{border-radius:14px;overflow:hidden;box-shadow:0 12px 35px #102d570a;transition:transform .25s ease,box-shadow .25s ease}
+.project-card:hover{transform:translateY(-5px);box-shadow:0 20px 45px #102d5718}
+.project-visual{height:245px}
+.price-market,.price-card,.domain-grid article,.milestone-grid article,.contact-form{border-radius:14px}
+.featured-price{box-shadow:0 14px 38px #2f7df61c}
+.contact{background:linear-gradient(135deg,#f6f9ff,#edf4ff)}
+.contact-form{box-shadow:0 22px 60px #102d5715;padding:34px}
+.footer{background:radial-gradient(ellipse at 85% 0,#15325e,#061127 60%)}
+@keyframes worldDrift{from{transform:scale(1)}to{transform:scale(1.09)}}
+@media(max-width:900px){.hero{gap:24px;padding-left:6vw;padding-right:6vw}.hero h1{font-size:clamp(43px,6vw,58px)}.global-hero-art{height:420px}}
+@media(max-width:680px){.site-header{height:72px}.hero{padding:66px 24px 55px;gap:28px}.hero h1{font-size:43px;letter-spacing:-2.4px}.global-hero-art{height:340px;border-radius:20px}.hero-global-label{left:13px;bottom:13px;padding:11px 13px}.hero-floating-card{right:12px;top:12px;font-size:9px}.global-studio{padding-top:75px;padding-bottom:75px}.studio-photo{height:270px}.project-visual{height:215px}.contact-form{padding:22px}}
+@media(prefers-reduced-motion:reduce){.hero-world-image{animation:none}.studio-photo img{transition:none}}
