@@ -94,6 +94,20 @@ const reviewCountry = document.getElementById('review-country');
 const reviewDial = document.getElementById('review-dial-code');
 const reviewDialHidden = document.getElementById('review-dial-hidden');
 const reviewPanel = document.getElementById('review-form-panel');
+const reviewOpenButton = document.getElementById('review-open-button');
+const openReviewForm = () => {
+  if (!reviewPanel) return;
+  reviewPanel.hidden = false;
+  reviewOpenButton?.setAttribute('aria-expanded','true');
+  reviewOpenButton?.classList.add('is-open');
+};
+reviewOpenButton?.addEventListener('click', () => {
+  if (!reviewPanel) return;
+  const shouldOpen = reviewPanel.hidden;
+  reviewPanel.hidden = !shouldOpen;
+  reviewOpenButton.setAttribute('aria-expanded',String(shouldOpen));
+  reviewOpenButton.classList.toggle('is-open',shouldOpen);
+});
 document.querySelectorAll('.country-choice').forEach(button => {
   button.addEventListener('click', () => {
     const option = [...(reviewCountry?.options || [])].find(item => item.dataset.code === button.dataset.country);
@@ -102,6 +116,7 @@ document.querySelectorAll('.country-choice').forEach(button => {
       if (reviewDial) reviewDial.textContent = button.dataset.dial;
       if (reviewDialHidden) reviewDialHidden.value = button.dataset.dial;
       document.querySelectorAll('.country-choice').forEach(item => item.classList.toggle('is-selected', item === button));
+      openReviewForm();
       reviewPanel?.scrollIntoView({behavior:'smooth',block:'start'});
       document.getElementById('review-phone')?.focus({preventScroll:true});
     }
@@ -142,7 +157,7 @@ const renderApprovedReviews = async () => {
       return article;
     });
   } catch (error) {
-    if (reviewStatus) reviewStatus.textContent='Customer reviews will load when the review service is connected.';
+    // Keep the public review area quiet if the review service is temporarily unavailable.
   }
 };
 customerReviewForm?.addEventListener('submit', async event => {
