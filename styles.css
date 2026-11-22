@@ -224,3 +224,19 @@
 }
 @keyframes consoleFloatMobile{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.software-hero-art *{animation:none!important}}
+
+
+/* Portfolio credibility section: verifiable proof, no invented reviews */
+.proof-strip strong{min-width:66px;font-size:11px;letter-spacing:.7px}
+.credibility-section{background:#fff}
+.credibility-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:42px}
+.credibility-grid article{padding:24px 20px;border:1px solid var(--line);background:#fff}
+.credibility-grid article>span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#edf5ff;color:var(--blue);font:800 10px Manrope}
+.credibility-grid h3{font:700 15px Manrope;color:var(--navy);margin:18px 0 9px}
+.credibility-grid p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}
+.feedback-honesty{display:flex;gap:18px;align-items:flex-start;margin-top:24px;padding:24px 26px;background:#f3f7fc;border-left:3px solid var(--cyan)}
+.feedback-mark{font:700 45px/1 Georgia;color:var(--blue)}
+.feedback-honesty b{font:700 15px Manrope;color:var(--navy)}
+.feedback-honesty p{font-size:12px;line-height:1.8;color:var(--muted);margin:8px 0 12px}
+@media(max-width:900px){.credibility-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.proof-strip strong{min-width:68px}.credibility-grid{grid-template-columns:1fr;gap:10px;margin-top:30px}.credibility-grid article{padding:21px}.feedback-honesty{padding:19px;gap:12px}.feedback-mark{font-size:36px}}
