@@ -1,5 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 150" role="img" aria-labelledby="title desc">
-<title id="title">Klyrova Technologies</title><desc id="desc">Klyrova Technologies logo with a blue geometric K, orange orbit, globe detail and the tagline Digital products built for business.</desc>
-<defs><linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#178cff"/><stop offset="1" stop-color="#082b83"/></linearGradient><linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffbf24"/><stop offset="1" stop-color="#f47700"/></linearGradient></defs>
-<g transform="translate(10 12)"><path d="M14 10h27v39l37-39h35L65 68l51 58H80L41 81v45H14z" fill="url(#blue)"/><path d="M5 84C36 125 118 95 138 39c5-14 2-26-8-34" fill="none" stroke="url(#orange)" stroke-width="9" stroke-linecap="round"/><g fill="#168cff"><rect x="124" y="4" width="9" height="9" rx="1"/><rect x="139" y="17" width="7" height="7" rx="1"/><rect x="119" y="25" width="6" height="6" rx="1"/></g></g>
-<g font-family="Arial,Helvetica,sans-serif"><text x="180" y="83" font-size="68" font-weight="800" letter-spacing="-2" fill="#0a1e4d">Klyr</text><g transform="translate(333 28)"><circle cx="28" cy="34" r="27" fill="#fff" stroke="#1479df" stroke-width="5"/><path d="M5 34h46M28 7c-12 14-12 40 0 54M28 7c12 14 12 40 0 54M10 19c11 8 25 8 36 0M10 49c11-8 25-8 36 0" fill="none" stroke="#1479df" stroke-width="2.5" stroke-linecap="round"/></g><text x="397" y="83" font-size="68" font-weight="800" letter-spacing="-2" fill="#0a1e4d">va</text><text x="181" y="119" font-size="27" font-weight="700" letter-spacing="1.4" fill="#f28a00">TECHNOLOGIES</text><text x="181" y="143" font-size="14" font-style="italic" fill="#173b70">Digital products built for business.</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 130" role="img" aria-labelledby="title desc">
+<title id="title">Klyrova Technologies</title>
+<desc id="desc">Klyrova Technologies logo with a blue geometric K and orange orbit, followed by a clear navy wordmark and orange Technologies label.</desc>
+<defs>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#178cff"/><stop offset="1" stop-color="#082b83"/></linearGradient>
+  <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffbf24"/><stop offset="1" stop-color="#f47700"/></linearGradient>
+</defs>
+<g transform="translate(5 5)">
+  <path d="M14 8h28v40l38-40h37L66 66l53 56H81L42 79v43H14z" fill="url(#blue)"/>
+  <path d="M5 83C36 124 118 94 138 38c5-14 2-26-8-34" fill="none" stroke="url(#orange)" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#168cff"><rect x="124" y="4" width="9" height="9" rx="1"/><rect x="139" y="17" width="7" height="7" rx="1"/><rect x="119" y="25" width="6" height="6" rx="1"/></g>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="165" y="78" font-size="69" font-weight="800" letter-spacing="-2.5" fill="#0a1e4d">Klyrova</text>
+  <text x="169" y="116" font-size="29" font-weight="800" letter-spacing="2.4" fill="#f28a00">TECHNOLOGIES</text>
+</g>
+</svg>
