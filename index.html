@@ -230,7 +230,8 @@
             <article class="review-slide review-empty-slide"><span class="review-slide-stars">REVIEWS</span><b>Your experience could be featured here.</b><p>We are inviting clients to share honest feedback. Approved reviews will appear in this horizontal slider.</p></article>
           </div>
         </div>
-        <div class="review-form-panel" id="review-form-panel">
+        <button class="button button-primary review-open-button" id="review-open-button" type="button" aria-expanded="false" aria-controls="review-form-panel">Share your experience <span>↗</span></button>
+        <div class="review-form-panel" id="review-form-panel" hidden>
           <div class="review-form-heading"><p class="eyebrow">SHARE YOUR EXPERIENCE</p><h4>Tell us how we did.</h4><p>Choose your country above or select it below. Your review is sent privately to our team for checking before it is published.</p></div>
           <form class="review-form" id="customer-review-form" method="POST">
             <input type="hidden" name="_subject" value="New Klyrova website customer review">
@@ -261,7 +262,7 @@
             <button class="button button-primary review-submit" type="submit">Send my review <span>↗</span></button>
             <p class="review-form-privacy">Your phone number and email are for feedback follow-up and verification. They will not be displayed with your public review.</p>
           </form>
-          <p class="review-form-status" id="review-form-status" role="status">Reviews are checked by our team before appearing publicly.</p>
+          <p class="review-form-status" id="review-form-status" role="status" aria-live="polite"></p>
         </div>
       </div>
     </section>
