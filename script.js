@@ -41,7 +41,7 @@ form?.addEventListener('submit', event => {
   const data = new FormData(form);
   const subject = encodeURIComponent(`Website project enquiry — ${data.get('name')}`);
   const body = encodeURIComponent(
-    `Selected package: ${selectedPackage || 'Not selected'}\nMarket: ${selectedMarket || 'Not specified'}\nStarting price: ${selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'}\nLaunch offer preference: ${projectParams.get('offer') || 'Customer to choose — 10% discount or complimentary website launch setup'}\nName: ${data.get('name')}\nEmail: ${data.get('email')}\nBusiness: ${data.get('business') || 'Not provided'}\nBudget: ${data.get('budget') || 'Not specified'}\nService: ${data.get('service')}\n\nProject details:\n${data.get('message')}`
+    `Selected package: ${selectedPackage || 'Not selected'}\nMarket: ${selectedMarket || 'Not specified'}\nStarting price: ${selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'}\nLaunch offer preference: ${data.get('launchOffer') || 'Customer to choose'}\nName: ${data.get('name')}\nEmail: ${data.get('email')}\nBusiness: ${data.get('business') || 'Not provided'}\nBudget: ${data.get('budget') || 'Not specified'}\nService: ${data.get('service')}\n\nProject details:\n${data.get('message')}`
   );
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   if (note) note.textContent = 'Your email application should open with your enquiry ready to send. This form does not submit directly to a server.';
