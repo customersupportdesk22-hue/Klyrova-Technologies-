@@ -152,3 +152,8 @@
   .hero-image-shade{background:linear-gradient(180deg,rgba(4,16,38,.02),rgba(4,16,38,.06))}
   .hero-floating-card,.hero-global-label{display:none}
 }
+
+
+/* Use the real Klyrova brand symbol in the About section */
+.about-mark{display:grid;place-items:center;padding:24px}
+.about-mark img{display:block;width:100%;height:100%;object-fit:contain;transform:rotate(8deg)}
