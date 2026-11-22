@@ -342,3 +342,14 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .review-form-panel[hidden]{display:none!important}
 .review-open-button{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:18px;border:0;cursor:pointer}
 .review-open-button.is-open{margin-bottom:0}
+
+
+/* Additional Klyrova team image — keeps the original studio photo intact */
+.inside-klyrova{display:grid;grid-template-columns:.78fr 1.22fr;align-items:center;gap:52px;padding-top:92px;padding-bottom:92px}
+.inside-klyrova-copy{max-width:430px}
+.inside-klyrova-copy h2{font:800 clamp(30px,4vw,46px)/1.13 Manrope,sans-serif;letter-spacing:-1.5px;color:var(--navy);margin:13px 0}
+.inside-klyrova-copy>p:not(.eyebrow){font-size:13px;line-height:1.85;color:var(--muted);margin:0 0 22px}
+.inside-klyrova-visual{margin:0;min-width:0}
+.inside-klyrova-visual img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;box-shadow:0 20px 50px rgba(8,28,57,.14)}
+.inside-klyrova-visual figcaption{margin-top:10px;color:var(--muted);font-size:10px;line-height:1.6}
+@media(max-width:760px){.inside-klyrova{grid-template-columns:1fr;gap:24px;padding-top:68px;padding-bottom:68px}.inside-klyrova-copy{max-width:600px}.inside-klyrova-visual img{border-radius:12px}}
