@@ -129,3 +129,17 @@
 
 /* Klyrova brand logo */
 .brand{gap:0}.brand-logo{display:block;width:clamp(190px,21vw,250px);height:auto;max-height:58px;object-fit:contain}.footer .brand-logo{width:220px;max-width:100%}@media(max-width:640px){.brand-logo{width:174px;max-height:48px}.footer .brand-logo{width:205px}}
+
+
+/* Larger, clearer Klyrova wordmark on phones and desktop */
+.brand{gap:0;flex:0 1 auto;min-width:0}
+.brand-logo{display:block;width:clamp(220px,24vw,270px);height:auto;max-height:66px;object-fit:contain;object-position:left center}
+.site-header .brand{max-width:calc(100% - 66px)}
+.footer .brand-logo{width:240px;max-width:100%;max-height:none}
+@media(max-width:680px){
+  .site-header{height:82px;padding:0 18px}
+  .brand-logo{width:218px;max-height:58px}
+  .menu-toggle{font-size:29px;flex:none;padding:8px 0 8px 12px}
+  .footer .brand-logo{width:225px}
+}
+@media(max-width:360px){.brand-logo{width:195px;max-height:54px}}
