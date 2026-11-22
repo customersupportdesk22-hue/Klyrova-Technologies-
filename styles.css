@@ -81,3 +81,30 @@
   .hero-global-label small{font-size:9px}
   .hero-floating-card{right:10px;top:10px;padding:9px 11px;font-size:8px}
 }
+
+
+/* Use the uploaded, individual portfolio artwork. */
+.project-visual{
+  padding:0;
+  background:#0b1930;
+  overflow:hidden;
+}
+.project-image{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:0;
+  object-fit:cover;
+  object-position:center;
+}
+.project-card .project-image{
+  transition:transform .55s ease;
+}
+.project-card:hover .project-image{
+  transform:scale(1.035);
+}
+.hero-world-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
