@@ -26,6 +26,14 @@ const form = document.getElementById('enquiry-form');
 const note = document.getElementById('form-note');
 const CONTACT_EMAIL = 'bahzuri60@gmail.com';
 
+// Preselect the service when a visitor arrives from a service card.
+const requestedService = new URLSearchParams(window.location.search).get('service');
+const serviceSelect = document.getElementById('service');
+if (requestedService && serviceSelect) {
+  const matchingOption = [...serviceSelect.options].find(option => option.value.toLowerCase() === requestedService.toLowerCase() || option.textContent.toLowerCase() === requestedService.toLowerCase());
+  if (matchingOption) serviceSelect.value = matchingOption.value;
+}
+
 form?.addEventListener('submit', event => {
   event.preventDefault();
   if (!form.reportValidity()) return;
