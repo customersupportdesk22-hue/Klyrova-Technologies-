@@ -114,3 +114,15 @@
 .project-list{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:900px){.project-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.project-list{grid-template-columns:1fr}}
+
+
+/* Interactive pricing cards and first-five-client launch offer */
+.price-card[data-select-url],.selectable-price-card{cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.price-card[data-select-url]:hover,.price-card[data-select-url]:focus-visible,.selectable-price-card:hover,.selectable-price-card:focus-visible{transform:translateY(-4px);border-color:#397dff;box-shadow:0 16px 36px #173d7520;outline:none}
+.price-card[data-select-url]:focus-visible,.selectable-price-card:focus-visible{outline:3px solid #397dff55;outline-offset:3px}
+.launch-offer{margin-top:22px;padding:20px 22px;background:linear-gradient(115deg,#071329,#123366);border:1px solid #294c80;border-radius:14px;color:#fff;max-width:760px;box-shadow:0 15px 35px #07132918}
+.launch-offer-tag{display:inline-block;font-size:9px;letter-spacing:1.5px;font-weight:800;color:#70dce8;margin-bottom:9px}
+.launch-offer>b{display:block;font:800 20px Manrope;color:#fff}
+.launch-offer p{font-size:11px;line-height:1.75;color:#d3e0f2;margin:8px 0 0}
+.launch-offer strong{color:#fff}
+.selectable-price-card{background:#fff;border:1px solid #e4eaf2;padding:22px;border-radius:7px}
