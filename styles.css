@@ -165,3 +165,12 @@
 .whatsapp-float:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(10,35,25,.3)}
 .whatsapp-float:focus-visible{outline:3px solid #128C7E;outline-offset:3px}
 @media(max-width:680px){.whatsapp-float{width:46px;height:46px;right:15px;bottom:17px}.whatsapp-float svg{width:27px;height:27px}}
+
+
+/* Brief WhatsApp invitation that disappears automatically */
+.whatsapp-float{overflow:visible}
+.whatsapp-hint{position:absolute;right:59px;bottom:5px;display:block;width:max-content;max-width:calc(100vw - 105px);padding:11px 14px;border-radius:999px;background:#fff;color:#17324a;font:600 12px/1.25 "DM Sans",sans-serif;box-shadow:0 5px 22px rgba(9,29,52,.17);border:1px solid #e8eef3;white-space:nowrap;pointer-events:none;opacity:0;transform:translateX(8px);animation:whatsappHintAppear 6.5s ease .8s forwards}
+.whatsapp-hint:after{content:"";position:absolute;right:-5px;bottom:13px;width:9px;height:9px;background:#fff;border-right:1px solid #e8eef3;border-top:1px solid #e8eef3;transform:rotate(45deg)}
+@keyframes whatsappHintAppear{0%,8%{opacity:0;transform:translateX(8px)}18%,78%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(8px)}}
+@media(max-width:680px){.whatsapp-hint{right:55px;bottom:4px;padding:10px 12px;font-size:11px;max-width:calc(100vw - 96px)}}
+@media(prefers-reduced-motion:reduce){.whatsapp-hint{animation:none;opacity:1;transform:none}}
