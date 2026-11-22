@@ -16,7 +16,7 @@ const RESEND_FROM = process.env.RESEND_FROM;
 app.disable('x-powered-by');
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: '20kb' }));
-app.use(express.static(path.join(__dirname), { index: 'index.html' }));
+app.use((req,res,next)=>{ if(['/server.js','/package.json','/.env.example'].includes(req.path)) return res.sendStatus(404); next(); });\napp.use(express.static(path.join(__dirname), { index: 'index.html' }));
 
 let reviews;
 let mongoClient;
