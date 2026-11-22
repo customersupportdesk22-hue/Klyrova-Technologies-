@@ -143,3 +143,12 @@
   .footer .brand-logo{width:225px}
 }
 @media(max-width:360px){.brand-logo{width:195px;max-height:54px}}
+
+
+/* Preserve every word embedded in the global world artwork on phones */
+@media(max-width:680px){
+  .global-hero-art{height:auto;min-height:0;aspect-ratio:16 / 10;max-height:none;background:#071329}
+  .hero-world-image{object-fit:contain;object-position:center;animation:none}
+  .hero-image-shade{background:linear-gradient(180deg,rgba(4,16,38,.02),rgba(4,16,38,.06))}
+  .hero-floating-card,.hero-global-label{display:none}
+}
