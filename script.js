@@ -113,3 +113,68 @@ reviewCountry?.addEventListener('change', () => {
   if (reviewDialHidden) reviewDialHidden.value = option?.dataset.dial || '';
   document.querySelectorAll('.country-choice').forEach(button => button.classList.toggle('is-selected', button.dataset.country === option?.dataset.code));
 });
+
+ 
+// Customer reviews are now submitted to the Klyrova review API.
+const customerReviewForm = document.getElementById('customer-review-form');
+const reviewStatus = document.getElementById('review-form-status');
+const reviewSlider = document.getElementById('review-slider');
+const renderApprovedReviews = async () => {
+  if (!reviewSlider) return;
+  try {
+    const response = await fetch('/api/reviews');
+    if (!response.ok) throw new Error('Could not load reviews');
+    const reviews = await response.json();
+    if (!Array.isArray(reviews) || reviews.length === 0) return;
+    reviewSlider.innerHTML = reviews.map(review => {
+      const article = document.createElement('article');
+      article.className = 'review-slide';
+      const stars = '★'.repeat(Math.max(1, Math.min(5, Number(review.rating) || 0)));
+      const date = review.approvedAt ? new Date(review.approvedAt).toLocaleDateString(undefined,{month:'short',year:'numeric'}) : '';
+      const name = String(review.displayName || 'Klyrova customer');
+      const country = String(review.country || '');
+      const quote = String(review.review || '');
+      const starEl = document.createElement('span'); starEl.className='review-slide-stars'; starEl.textContent=stars;
+      const quoteEl = document.createElement('p'); quoteEl.textContent=quote;
+      const nameEl = document.createElement('b'); nameEl.textContent=name;
+      const metaEl = document.createElement('small'); metaEl.textContent=[country,date].filter(Boolean).join(' · ');
+      article.append(starEl,quoteEl,nameEl,metaEl);
+      return article;
+    });
+  } catch (error) {
+    if (reviewStatus) reviewStatus.textContent='Customer reviews will load when the review service is connected.';
+  }
+};
+customerReviewForm?.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!customerReviewForm.reportValidity()) return;
+  const submit = customerReviewForm.querySelector('button[type="submit"]');
+  if (submit) { submit.disabled=true; submit.textContent='Sending review…'; }
+  if (reviewStatus) reviewStatus.textContent='Sending your review securely…';
+  const formData = new FormData(customerReviewForm);
+  const payload = {
+    name: formData.get('Customer name'),
+    email: formData.get('Customer email'),
+    country: formData.get('Country'),
+    dialCode: formData.get('International dialing code'),
+    phone: formData.get('Phone number'),
+    rating: formData.get('Rating'),
+    review: formData.get('Customer review'),
+    publicationPermission: Boolean(formData.get('Publication permission'))
+  };
+  try {
+    const response = await fetch('/api/reviews',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const result = await response.json().catch(()=>({}));
+    if (!response.ok) throw new Error(result.error || 'We could not submit your review. Please try again.');
+    customerReviewForm.reset();
+    if (reviewDial) reviewDial.textContent='—';
+    if (reviewDialHidden) reviewDialHidden.value='';
+    document.querySelectorAll('.country-choice').forEach(button=>button.classList.remove('is-selected'));
+    if (reviewStatus) reviewStatus.textContent='Thank you. Your review has been received and is awaiting approval. It will appear here only after our team approves it.';
+  } catch (error) {
+    if (reviewStatus) reviewStatus.textContent=error.message || 'Unable to submit right now. Please try again later.';
+  } finally {
+    if (submit) { submit.disabled=false; submit.innerHTML='Send my review <span>↗</span>'; }
+  }
+});
+renderApprovedReviews();
