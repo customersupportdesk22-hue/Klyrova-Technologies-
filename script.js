@@ -87,3 +87,26 @@ document.querySelectorAll('[data-select-url]').forEach(card => {
     }
   });
 });
+
+
+// Country cards prefill the customer review form and its international dial code.
+const reviewCountry = document.getElementById('review-country');
+const reviewDial = document.getElementById('review-dial-code');
+const reviewPanel = document.getElementById('review-form-panel');
+document.querySelectorAll('.country-choice').forEach(button => {
+  button.addEventListener('click', () => {
+    const option = [...(reviewCountry?.options || [])].find(item => item.dataset.code === button.dataset.country);
+    if (option && reviewCountry) {
+      reviewCountry.value = option.value;
+      if (reviewDial) reviewDial.textContent = button.dataset.dial;
+      document.querySelectorAll('.country-choice').forEach(item => item.classList.toggle('is-selected', item === button));
+      reviewPanel?.scrollIntoView({behavior:'smooth',block:'start'});
+      document.getElementById('review-phone')?.focus({preventScroll:true});
+    }
+  });
+});
+reviewCountry?.addEventListener('change', () => {
+  const option = reviewCountry.selectedOptions[0];
+  if (reviewDial) reviewDial.textContent = option?.dataset.dial || '—';
+  document.querySelectorAll('.country-choice').forEach(button => button.classList.toggle('is-selected', button.dataset.country === option?.dataset.code));
+});
