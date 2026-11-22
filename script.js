@@ -27,7 +27,17 @@ const note = document.getElementById('form-note');
 const CONTACT_EMAIL = 'bahzuri60@gmail.com';
 
 // Preselect the service when a visitor arrives from a service card.
-const projectParams = new URLSearchParams(window.location.search);\nconst requestedService = projectParams.get('service');\nconst selectedPackage = projectParams.get('package');\nconst selectedMarket = projectParams.get('market');\nconst selectedPrice = projectParams.get('price');\nconst selectedCurrency = projectParams.get('currency') || (selectedMarket === 'Kenya' ? 'KES' : 'USD');\nconst selectedPackageBox = document.getElementById('selected-package');\nif (selectedPackage && selectedPackageBox) {\n  selectedPackageBox.hidden = false;\n  selectedPackageBox.innerHTML = `<strong>Your selection:</strong> ${selectedPackage} · ${selectedMarket || 'To be confirmed'}${selectedPrice ? ` · ${selectedCurrency} ${selectedPrice} starting price` : ''}<br><strong>First-five-client offer:</strong> Choose 10% off the development fee or complimentary website launch setup, subject to availability.`;\n}
+const projectParams = new URLSearchParams(window.location.search);
+const requestedService = projectParams.get('service');
+const selectedPackage = projectParams.get('package');
+const selectedMarket = projectParams.get('market');
+const selectedPrice = projectParams.get('price');
+const selectedCurrency = projectParams.get('currency') || (selectedMarket === 'Kenya' ? 'KES' : 'USD');
+const selectedPackageBox = document.getElementById('selected-package');
+if (selectedPackage && selectedPackageBox) {
+  selectedPackageBox.hidden = false;
+  selectedPackageBox.textContent = `Your selection: ${selectedPackage} · ${selectedMarket || 'To be confirmed'}${selectedPrice ? ` · ${selectedCurrency} ${selectedPrice} starting price` : ''}. First-five-client offer: choose 10% off the development fee or complimentary website launch setup, subject to availability.`;
+}
 const serviceSelect = document.getElementById('service');
 if (requestedService && serviceSelect) {
   const matchingOption = [...serviceSelect.options].find(option => option.value.toLowerCase() === requestedService.toLowerCase() || option.textContent.toLowerCase() === requestedService.toLowerCase());
