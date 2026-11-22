@@ -157,3 +157,11 @@
 /* Use the real Klyrova brand symbol in the About section */
 .about-mark{display:grid;place-items:center;padding:24px}
 .about-mark img{display:block;width:100%;height:100%;object-fit:contain;transform:rotate(8deg)}
+
+
+/* Small, original WhatsApp floating contact button */
+.whatsapp-float{position:fixed;right:19px;bottom:20px;z-index:60;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:#fff;box-shadow:0 5px 18px rgba(10,35,25,.24);border:2px solid rgba(255,255,255,.95);transition:transform .18s ease,box-shadow .18s ease}
+.whatsapp-float svg{display:block;width:29px;height:29px}
+.whatsapp-float:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(10,35,25,.3)}
+.whatsapp-float:focus-visible{outline:3px solid #128C7E;outline-offset:3px}
+@media(max-width:680px){.whatsapp-float{width:46px;height:46px;right:15px;bottom:17px}.whatsapp-float svg{width:27px;height:27px}}
