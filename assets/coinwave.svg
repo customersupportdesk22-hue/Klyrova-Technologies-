@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">CoinWave V2 cryptocurrency trading visual</title>
+<desc id="desc">A glowing gold Bitcoin coin in front of a navy global market chart with rising candlesticks and blue and gold trend lines.</desc>
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#06132d"/><stop offset=".55" stop-color="#092b55"/><stop offset="1" stop-color="#031020"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#f6b923" stop-opacity=".34"/><stop offset="1" stop-color="#f6b923" stop-opacity="0"/></radialGradient>
+ <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#fff0a6"/><stop offset=".35" stop-color="#f8bd32"/><stop offset=".7" stop-color="#b96a08"/><stop offset="1" stop-color="#ffe27b"/></linearGradient>
+ <linearGradient id="blue" x2="0" y2="1"><stop stop-color="#18c9ff"/><stop offset="1" stop-color="#0871e8"/></linearGradient>
+ <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#4b9bdb" stroke-opacity=".18" stroke-width="1"/></pattern>
+ <filter id="shadow"><feGaussianBlur stdDeviation="22"/></filter>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/><rect width="1200" height="675" fill="url(#grid)"/>
+<ellipse cx="615" cy="365" rx="390" ry="300" fill="url(#glow)"/>
+<g fill="#1784d9" opacity=".28"><circle cx="110" cy="120" r="3"/><circle cx="145" cy="120" r="3"/><circle cx="180" cy="120" r="3"/><circle cx="215" cy="120" r="3"/><circle cx="250" cy="120" r="3"/><circle cx="285" cy="120" r="3"/><circle cx="320" cy="120" r="3"/><circle cx="355" cy="120" r="3"/><circle cx="390" cy="120" r="3"/><circle cx="425" cy="120" r="3"/><circle cx="460" cy="120" r="3"/></g>
+<g stroke="#0c9aff" stroke-width="3" fill="none" opacity=".85"><path d="M0 490C160 440 230 520 360 440S590 400 710 330 930 330 1200 110"/><path d="M0 550C190 510 260 555 420 485S700 455 850 375 1030 360 1200 250" stroke="#f4b72d" stroke-width="4"/></g>
+<g opacity=".95">
+<g fill="#11c7e9"><rect x="70" y="360" width="18" height="80" rx="3"/><rect x="155" y="320" width="18" height="95" rx="3"/><rect x="240" y="385" width="18" height="70" rx="3"/><rect x="325" y="290" width="18" height="115" rx="3"/><rect x="410" y="250" width="18" height="95" rx="3"/><rect x="495" y="300" width="18" height="80" rx="3"/><rect x="850" y="230" width="18" height="100" rx="3"/><rect x="935" y="180" width="18" height="115" rx="3"/><rect x="1020" y="135" width="18" height="120" rx="3"/><rect x="1105" y="75" width="18" height="130" rx="3"/></g>
+<g stroke-width="4" stroke="#20d9ef"><path d="M79 330v145M164 285v165M249 355v135M334 250v180M419 210v150M504 265v150M859 190v180M944 140v190M1029 95v190M1114 35v190"/></g>
+<g fill="#f6a623"><rect x="112" y="400" width="18" height="65" rx="3"/><rect x="197" y="370" width="18" height="55" rx="3"/><rect x="282" y="330" width="18" height="70" rx="3"/><rect x="367" y="300" width="18" height="85" rx="3"/><rect x="452" y="240" width="18" height="65" rx="3"/><rect x="537" y="220" width="18" height="80" rx="3"/><rect x="892" y="175" width="18" height="80" rx="3"/><rect x="977" y="115" width="18" height="75" rx="3"/><rect x="1062" y="80" width="18" height="85" rx="3"/></g>
+</g>
+<ellipse cx="600" cy="565" rx="250" ry="36" fill="#000" opacity=".55" filter="url(#shadow)"/>
+<g transform="translate(600 340)">
+ <circle r="205" fill="#8b4c05" opacity=".7"/><circle r="190" fill="url(#gold)" stroke="#fff0a0" stroke-width="9"/><circle r="166" fill="#9d5c0a" stroke="#ffdc69" stroke-width="8"/><circle r="150" fill="url(#gold)" stroke="#fff0a0" stroke-width="4"/>
+ <circle r="133" fill="none" stroke="#9d5c0a" stroke-width="5" stroke-dasharray="5 9"/><circle r="118" fill="none" stroke="#fff0a0" stroke-width="3"/>
+ <text x="0" y="73" text-anchor="middle" font-family="Arial,sans-serif" font-size="250" font-weight="700" fill="#8d5008" opacity=".65">₿</text><text x="-8" y="65" text-anchor="middle" font-family="Arial,sans-serif" font-size="250" font-weight="700" fill="#fff0a6">₿</text>
+</g>
+<g fill="url(#gold)" stroke="#fff0a6" stroke-width="3"><ellipse cx="275" cy="585" rx="75" ry="18"/><path d="M200 585v26c0 12 34 22 75 22s75-10 75-22v-26" fill="#a96108"/><ellipse cx="275" cy="611" rx="75" ry="18" fill="none"/><ellipse cx="930" cy="570" rx="85" ry="20"/><path d="M845 570v30c0 13 38 24 85 24s85-11 85-24v-30" fill="#a96108"/><ellipse cx="930" cy="600" rx="85" ry="20" fill="none"/></g>
+<path d="M0 640H1200" stroke="#1aa7ff" stroke-opacity=".35" stroke-width="2"/>
+</svg>
