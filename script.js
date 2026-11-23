@@ -47,6 +47,7 @@ const serviceGuidance = document.getElementById('service-guidance');
 const serviceGuidanceTitle = document.getElementById('service-guidance-title');
 const serviceGuidanceDescription = document.getElementById('service-guidance-description');
 const serviceGuidanceNeeded = document.getElementById('service-guidance-needed');
+const advertisingDetails = document.getElementById('advertising-details');
 const serviceGuides = {
   'Business website': ['A professional website for your organisation.','We can plan the pages, mobile layout, contact forms, WhatsApp links, service or product information and domain connection.','Helpful details: business type, website name (if known), pages needed, examples you like and the main action visitors should take.'],
   'E-commerce website': ['An online store where customers can browse and order.','We can discuss product categories, product pages, cart, checkout, order management, delivery options and payment-provider integration.','Helpful details: approximate number of products, delivery areas, currencies, preferred payment methods and who will manage orders.'],
@@ -63,7 +64,7 @@ const serviceGuides = {
   'Website hosting / deployment': ['Publish your website or move it to suitable hosting.','We can review the site technology, traffic needs, deployment process, backups, SSL and ongoing hosting costs.','Helpful details: current website/repository URL, domain, current host, expected traffic and any deployment errors.'],
   'Business email / DNS setup': ['Set up professional email and the domain records it needs.','We can help configure mailboxes or a provider and the required DNS records, including SPF, DKIM and DMARC where supported.','Helpful details: domain name, email provider, number of mailboxes and whether email is new or being migrated.'],
   'Payment gateway / checkout integration': ['Add a secure checkout experience to your website or app.','We can compare suitable providers and integrate their supported checkout/API flow. Provider onboarding, transaction fees and settlement approval remain with the provider.','Helpful details: business country, customer countries, currencies, payment methods, website platform and merchant-account status.'],
-  'Advertising & customer acquisition': ['Plan and manage campaigns to attract genuine enquiries and potential customers.','We can discuss audience, platforms, campaign creative, tracking and duration. Our management fee is quoted separately from the advertising budget; results and sales are not guaranteed.','Helpful details: product/service to promote, target location/audience, campaign duration, monthly ad budget, landing page and preferred platforms.'],
+  'Advertising & customer acquisition': ['Promote your business — with or without a website.','Share your website, social page, property listing or product link if you have one. If not, describe what you offer and provide photos, prices, location and contact details. We can plan the campaign and, if requested, work to generate genuine interested enquiries and pass those enquiries to you.','Helpful details: what to promote, target location/audience, campaign duration, advertising budget, any links or promotional materials, and whether you want us to help generate customer enquiries. A specific number of leads or sales is not guaranteed.'],
   'Something else': ['Tell us what you have in mind.','We will review your idea and help identify the right service or combination of services.','Helpful details: the problem you want to solve, who it is for and what a successful result would look like.']
 };
 const setServiceGuidance = value => {
@@ -76,6 +77,7 @@ const setServiceGuidance = value => {
   serviceGuidanceDescription.textContent = guide[1];
   serviceGuidanceNeeded.textContent = guide[2];
   serviceGuidance.hidden = false;
+  if (advertisingDetails) advertisingDetails.hidden = value !== 'Advertising & customer acquisition';
 };
 const setProjectService = value => {
   if (!serviceSelect || !servicePickerValue || !servicePicker) return;
@@ -126,7 +128,7 @@ form?.addEventListener('submit', event => {
   const data = new FormData(form);
   const subject = encodeURIComponent(`Website project enquiry — ${data.get('name')}`);
   const body = encodeURIComponent(
-    `Selected package: ${selectedPackage || 'Not selected'}\nMarket: ${selectedMarket || 'Not specified'}\nStarting price: ${selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'}\nLaunch offer preference: ${data.get('launchOffer') || 'Customer to choose'}\nName: ${data.get('name')}\nEmail: ${data.get('email')}\nBusiness: ${data.get('business') || 'Not provided'}\nBudget: ${data.get('budget') || 'Not specified'}\nService: ${data.get('service')}\n\nProject details:\n${data.get('message')}`
+    `Selected package: ${selectedPackage || 'Not selected'}\nMarket: ${selectedMarket || 'Not specified'}\nStarting price: ${selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'}\nLaunch offer preference: ${data.get('launchOffer') || 'Customer to choose'}\nName: ${data.get('name')}\nEmail: ${data.get('email')}\nBusiness: ${data.get('business') || 'Not provided'}\nBudget: ${data.get('budget') || 'Not specified'}\nService: ${data.get('service')}\nWebsite/social/listing link: ${data.get('promotionLink') || 'Not provided'}\nAdvertising support: ${data.get('advertisingSupport') || 'Not applicable'}\nPromotion details: ${data.get('promotionMaterial') || 'Not provided'}\n\nProject details:\n${data.get('message')}`
   );
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   if (note) note.textContent = 'Your email application should open with your enquiry ready to send. This form does not submit directly to a server.';
