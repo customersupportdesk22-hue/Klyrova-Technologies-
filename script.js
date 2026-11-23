@@ -33,6 +33,10 @@ const selectedPackage = projectParams.get('package');
 const selectedMarket = projectParams.get('market');
 const selectedPrice = projectParams.get('price');
 const selectedCurrency = projectParams.get('currency') || (selectedMarket === 'Kenya' ? 'KES' : 'USD');
+const requestedTemplate = projectParams.get('template');
+const requestedOffer = projectParams.get('offer');
+const templateField = document.getElementById('selected-template');
+if (templateField && requestedTemplate) templateField.value = requestedTemplate;
 const selectedPackageBox = document.getElementById('selected-package');
 if (selectedPackage && selectedPackageBox) {
   selectedPackageBox.hidden = false;
@@ -209,7 +213,7 @@ form?.addEventListener('submit', event => {
     ['Name',data.get('name')],['Email',data.get('email')],['Country',data.get('country')],
     ['Phone / WhatsApp',data.get('phone')],['Preferred contact',data.get('contactPreference')],
     ['Business',data.get('business')],['Service',data.get('service')],
-    ['Selected package',selectedPackage],['Market',selectedMarket],
+    ['Selected package',selectedPackage],['Selected template',data.get('template')],['Requested offer',requestedOffer],['Market',selectedMarket],
     ['Starting price',selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'],
     ['Launch offer',data.get('launchOffer')],['Budget',data.get('budget')],['Timeline',data.get('timeline')],
     ['Website / social link',data.get('promotionLink')],['Advertising platform spend',data.get('adSpendBudget')],
