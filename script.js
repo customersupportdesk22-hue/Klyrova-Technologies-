@@ -39,13 +39,53 @@ if (selectedPackage && selectedPackageBox) {
   selectedPackageBox.textContent = `Your selection: ${selectedPackage} · ${selectedMarket || 'To be confirmed'}${selectedPrice ? ` · ${selectedCurrency} ${selectedPrice} starting price` : ''}. First-five-client offer: choose 10% off the development fee or complimentary website launch setup, subject to availability.`;
 }
 const serviceSelect = document.getElementById('service');
+const servicePicker = document.getElementById('service-picker-trigger');
+const servicePickerValue = document.getElementById('service-picker-value');
+const servicePickerOptions = document.getElementById('service-picker-options');
+const servicePickerError = document.getElementById('service-picker-error');
+const setProjectService = value => {
+  if (!serviceSelect || !servicePickerValue || !servicePicker) return;
+  serviceSelect.value = value;
+  servicePickerValue.textContent = value || 'Choose a service';
+  servicePicker.setAttribute('aria-expanded', 'false');
+  if (servicePickerOptions) servicePickerOptions.hidden = true;
+  if (servicePickerError) servicePickerError.hidden = true;
+};
 if (requestedService && serviceSelect) {
-  const matchingOption = [...serviceSelect.options].find(option => option.value.toLowerCase() === requestedService.toLowerCase() || option.textContent.toLowerCase() === requestedService.toLowerCase());
-  if (matchingOption) serviceSelect.value = matchingOption.value;
+  const serviceChoices = [...(servicePickerOptions?.querySelectorAll('[data-service]') || [])].map(button => button.dataset.service);
+  const matchingService = serviceChoices.find(value => value.toLowerCase() === requestedService.toLowerCase());
+  if (matchingService) setProjectService(matchingService);
 }
+servicePicker?.addEventListener('click', () => {
+  if (!servicePickerOptions) return;
+  const open = servicePickerOptions.hidden;
+  servicePickerOptions.hidden = !open;
+  servicePicker.setAttribute('aria-expanded', String(open));
+});
+servicePickerOptions?.querySelectorAll('[data-service]').forEach(option => {
+  option.addEventListener('click', () => setProjectService(option.dataset.service));
+});
+document.addEventListener('click', event => {
+  if (!event.target.closest('.service-field') && servicePickerOptions && !servicePickerOptions.hidden) {
+    servicePickerOptions.hidden = true;
+    servicePicker?.setAttribute('aria-expanded', 'false');
+  }
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && servicePickerOptions && !servicePickerOptions.hidden) {
+    servicePickerOptions.hidden = true;
+    servicePicker?.setAttribute('aria-expanded', 'false');
+    servicePicker?.focus();
+  }
+});
 
 form?.addEventListener('submit', event => {
   event.preventDefault();
+  if (serviceSelect && !serviceSelect.value) {
+    if (servicePickerError) servicePickerError.hidden = false;
+    servicePicker?.focus();
+    return;
+  }
   if (!form.reportValidity()) return;
 
   const data = new FormData(form);
