@@ -424,3 +424,7 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .promotion-costs article p{margin:0;color:#c1cee0;font-size:11px;line-height:1.75}
 .ad-budget-hint{grid-column:1/-1;margin:-5px 0 5px;color:#62738b;font-size:10px;line-height:1.6}
 @media(max-width:760px){.promotion-costs{grid-template-columns:1fr;gap:9px;margin-top:22px}.promotion-costs article{padding:17px}}
+
+/* Service-specific budget selector guidance */
+#budget-field[hidden]{display:none!important}
+.budget-hint{margin:7px 0 0;color:#718096;font-size:10px;line-height:1.65}
