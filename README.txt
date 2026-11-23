@@ -1,29 +1,38 @@
-KLYROVA TECHNOLOGIES — WEBSITE STARTER
+KLYROVA TECHNOLOGIES — WEBSITE
 
-Files:
-- index.html: website structure and content
-- styles.css: responsive styling
-- script.js: mobile navigation, year and enquiry form
+CUSTOMER-FACING PAGES
+- index.html: main agency website, services, portfolio and pricing
+- start-project.html: project enquiry form
+- templates.html: illustrative website template gallery
+- integrations.html: integration capabilities and provider information
+- ai-assistant.html: interactive sample assistant (prepared demo replies, not a live AI model)
+- review.html: customer feedback form
+- styles.css, template-library.css: page styling
+- script.js, navigation.js, motion.js, review.js: browser-side interactions
 
-PORTFOLIO PROJECTS
-- House Hunt: https://house-hunt-server.onrender.com/
-- ENA Coach: https://enacoachonlinebooking.co.ke/
-- Easy Coach Booking: https://www.easycoachbooking.co.ke/
-- Biashara Boost Loans: https://www.biasharaloans.co.ke/
+CURRENT ENQUIRY AND REVIEW FLOW
+- Project enquiries are prepared in WhatsApp. The visitor must review the prefilled message and tap Send.
+- Customer reviews are also prepared in WhatsApp for private team review. The visitor must tap Send.
+- These two flows do not save submissions to a database or send automatic confirmation emails.
+- The public review slider is a placeholder until genuine reviews are approved and added.
+- Do not describe the review database/admin workflow as active on the current static site.
+
+OPTIONAL SERVER-SIDE COMPONENTS
+- server.js and package.json contain a Node/Express API with MongoDB review endpoints and an authenticated system-health endpoint.
+- reviews-admin.html / reviews-admin.js are intended for future review moderation.
+- command-centre.html / command-centre.js are intended for future private infrastructure checks.
+- These components require a Render Web Service, MongoDB and private environment variables. They do not run on a Render Static Site.
+- Before activating them, connect and test the API from review.js and the homepage review slider, then verify the admin and health-check flows on the new Web Service.
+- Keep the existing live Static Site until the new service has been fully tested.
 
 CONTACT
 - Email: bahzuri60@gmail.com
 - WhatsApp: +254 743 993 329
 
 LOCAL PREVIEW
-Open index.html in a browser, or deploy the repository as a static website.
+Open index.html in a browser, or deploy the front-end as a static website.
 
-BEFORE PUBLISHING
-1. Test the website on mobile and desktop.
-2. Test each portfolio link and make sure its description still matches the live project.
-3. Test the contact form on a device with an email application configured.
-4. The enquiry form uses mailto: and opens the visitor's email application. It does not send directly to a server or store customer details.
-5. Add a privacy notice if you later collect and store personal information or use analytics.
-
-IMPORTANT
-This is a static front-end website. It is not yet hosted or deployed. Hosting and any server-side contact form need to be configured separately.
+SECURITY
+- Never commit a real .env file, database URI, admin token or API key.
+- Keep customer provider accounts and settlement details in the customer's name wherever practical.
+- Add a privacy notice before introducing database storage, analytics or other collection of personal information.
