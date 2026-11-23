@@ -117,6 +117,13 @@ const getBudgetType = value => {
 };
 const setBudgetGuidance = value => {
   if (!budgetField || !budgetSelect) return;
+  // A customer who selected a package with a displayed starting price has
+  // already provided the budget direction; do not ask them to choose it again.
+  if (selectedPackage && selectedPrice) {
+    budgetField.hidden = true;
+    budgetSelect.value = '';
+    return;
+  }
   const type = getBudgetType(value);
   if (type === 'advertising') {
     budgetField.hidden = true;
