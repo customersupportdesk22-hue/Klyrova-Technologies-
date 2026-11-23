@@ -572,3 +572,17 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
  .preview-spark{width:22px;height:22px}.build-preview-float b{font-size:7px}.build-preview-float small{font-size:4px}
 }
 @media(prefers-reduced-motion:reduce){.build-code-float,.build-preview-float,.build-code-body>span{animation:none!important;opacity:1!important}}
+
+
+/* Customer-facing template gallery invitation and complimentary starter offer */
+.template-invitation{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:clamp(24px,5vw,64px);align-items:center;padding-top:clamp(56px,8vw,100px);padding-bottom:clamp(56px,8vw,100px)}
+.template-invitation-copy h2{max-width:680px;font:800 clamp(2rem,4.5vw,3.6rem)/1.08 Manrope,sans-serif;letter-spacing:-.045em;color:#0a1b39;margin:12px 0 18px}
+.template-invitation-copy>p:not(.eyebrow){max-width:620px;color:#61718a;line-height:1.8;margin:0 0 25px}
+.free-starter-card{padding:clamp(22px,3vw,32px);border:1px solid #dce8f7;border-radius:20px;background:linear-gradient(145deg,#f7fbff,#eef8ff);box-shadow:0 18px 55px rgba(19,65,119,.09)}
+.free-starter-label{display:inline-block;color:#087cf0;font:800 10px "DM Sans",sans-serif;letter-spacing:1.25px}
+.free-starter-card h3{font:800 clamp(1.35rem,2.5vw,1.8rem)/1.2 Manrope,sans-serif;color:#0a1b39;margin:13px 0}
+.free-starter-card p{color:#52657e;line-height:1.7;margin:0 0 14px}
+.free-starter-card small{display:block;color:#718097;line-height:1.6;font-size:11px;padding-top:13px;border-top:1px solid #dce8f7}
+.free-starter-card>a{display:inline-flex;margin-top:18px;color:#087cf0;font-weight:800;text-decoration:none}
+.free-starter-card>a span{margin-left:8px}
+@media(max-width:760px){.template-invitation{grid-template-columns:1fr;gap:25px}.free-starter-card{border-radius:16px}}
