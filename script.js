@@ -89,7 +89,6 @@ const serviceGuides = {
   'E-commerce website': ['An online store where customers can browse and order.','We can discuss product categories, product pages, cart, checkout, order management, delivery options and payment-provider integration.','Helpful details: approximate number of products, delivery areas, currencies, preferred payment methods and who will manage orders.'],
   'Booking platform': ['A system for customers to make and manage bookings.','We can scope schedules, availability, customer details, booking confirmations, admin tools, payments and notifications.','Helpful details: what customers book, locations/routes, schedules, pricing rules, booking steps and staff/admin roles.'],
   'Custom software or dashboard': ['A tailored system for your business operations.','We first map your workflow, users, permissions, records, reports and the tasks the software should automate.','Helpful details: what problem it solves, who will use it, current process, key screens/reports and any existing system to connect.'],
-  'Payment integration': ['Connect a payment provider to your website or platform.','We can assess hosted checkout, payment links, cards, mobile money, bank options, payment status callbacks and reconciliation.','Helpful details: provider name, countries/currencies, payment methods, whether you already have a merchant account and the platform to connect.'],
   'Customer support or automation': ['Make customer support and routine tasks easier.','We can plan enquiry capture, support workflows, FAQs, ticket routing, notifications and human handover.','Helpful details: where customers contact you, common questions, team workflow, operating hours and what should be automated.'],
   '24/7 Website AI Assistant': ['An AI assistant that helps website visitors even when your team is offline.','We can plan its knowledge sources, answers, lead capture, escalation to a human and usage controls.','Helpful details: website URL, business information/FAQs, languages, common questions and when it should hand over to staff.'],
   'WhatsApp AI Assistant': ['An AI-powered assistant for customer conversations on WhatsApp.','We can assess WhatsApp Business Platform access, approved message templates, AI responses, lead capture and human handover.','Helpful details: business use case, WhatsApp Business number/status, expected message volume and the tasks it should handle.'],
@@ -131,10 +130,13 @@ const setProjectService = value => {
   servicePickerValue.textContent = value || 'Choose a service';
   setServiceGuidance(value);
   const launchOffer = document.getElementById('launchOffer');
+  const launchOfferField = launchOffer?.closest('.full');
   const launchOfferLabel = document.getElementById('launch-offer-label');
   const launchOfferHint = document.getElementById('launch-offer-hint');
-  if (launchOffer) {
-    const isAdvertising = value === 'Advertising & customer acquisition';
+  const isAdvertising = value === 'Advertising & customer acquisition';
+  const isDevelopment = ['Business website','E-commerce website','Booking platform','Custom software or dashboard'].includes(value);
+  if (launchOfferField) launchOfferField.hidden = !isAdvertising && !isDevelopment;
+  if (launchOffer && (isAdvertising || isDevelopment)) {
     if (isAdvertising) {
       if (launchOfferLabel) launchOfferLabel.textContent = 'First-five-client advertising offer — choose one';
       if (launchOfferHint) launchOfferHint.textContent = 'Choose 10% off Klyrova’s campaign management fee or complimentary campaign setup. Advertising platform spend is not discounted or included.';
@@ -157,6 +159,7 @@ const setProjectService = value => {
   if (servicePickerOptions) servicePickerOptions.hidden = true;
   if (servicePickerError) servicePickerError.hidden = true;
 };
+if (!requestedService && servicePicker) setProjectService('');
 if (requestedService && serviceSelect) {
   const serviceChoices = [...(servicePickerOptions?.querySelectorAll('[data-service]') || [])].map(button => button.dataset.service);
   const matchingService = serviceChoices.find(value => value.toLowerCase() === requestedService.toLowerCase());
@@ -187,7 +190,6 @@ document.addEventListener('keydown', event => {
 
 if (serviceSelect && !servicePicker) {
   serviceSelect.addEventListener('change', () => {
-    setBudgetGuidance(serviceSelect.value);
     if (advertisingDetails) advertisingDetails.hidden = serviceSelect.value !== 'Advertising & customer acquisition';
   });
 }
