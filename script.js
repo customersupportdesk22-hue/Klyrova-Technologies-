@@ -119,6 +119,12 @@ const setServiceGuidance = value => {
 };
 const setProjectService = value => {
   if (!serviceSelect || !servicePickerValue || !servicePicker) return;
+  if (requestedTemplate && value !== requestedService) {
+    if (templateField) templateField.value = '';
+    if (templateSummary) templateSummary.hidden = true;
+    if (selectionSummary && !freeStarterSummary?.hidden) selectionSummary.hidden = false;
+    else if (selectionSummary && freeStarterSummary?.hidden) selectionSummary.hidden = true;
+  }
   if (selectedPackage && value !== selectedPackageService) {
     selectedPackage = '';
     selectedMarket = '';
@@ -135,7 +141,8 @@ const setProjectService = value => {
   const launchOfferHint = document.getElementById('launch-offer-hint');
   const isAdvertising = value === 'Advertising & customer acquisition';
   const isDevelopment = ['Business website','E-commerce website','Booking platform','Custom software or dashboard'].includes(value);
-  if (launchOfferField) launchOfferField.hidden = !isAdvertising && !isDevelopment;
+  const isFreeStarter = requestedOffer === 'Klyrova Free Starter';
+  if (launchOfferField) launchOfferField.hidden = isFreeStarter || (!isAdvertising && !isDevelopment);
   if (launchOffer && (isAdvertising || isDevelopment)) {
     if (isAdvertising) {
       if (launchOfferLabel) launchOfferLabel.textContent = 'First-five-client advertising offer — choose one';
