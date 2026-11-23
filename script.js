@@ -43,10 +43,45 @@ const servicePicker = document.getElementById('service-picker-trigger');
 const servicePickerValue = document.getElementById('service-picker-value');
 const servicePickerOptions = document.getElementById('service-picker-options');
 const servicePickerError = document.getElementById('service-picker-error');
+const serviceGuidance = document.getElementById('service-guidance');
+const serviceGuidanceTitle = document.getElementById('service-guidance-title');
+const serviceGuidanceDescription = document.getElementById('service-guidance-description');
+const serviceGuidanceNeeded = document.getElementById('service-guidance-needed');
+const serviceGuides = {
+  'Business website': ['A professional website for your organisation.','We can plan the pages, mobile layout, contact forms, WhatsApp links, service or product information and domain connection.','Helpful details: business type, website name (if known), pages needed, examples you like and the main action visitors should take.'],
+  'E-commerce website': ['An online store where customers can browse and order.','We can discuss product categories, product pages, cart, checkout, order management, delivery options and payment-provider integration.','Helpful details: approximate number of products, delivery areas, currencies, preferred payment methods and who will manage orders.'],
+  'Booking platform': ['A system for customers to make and manage bookings.','We can scope schedules, availability, customer details, booking confirmations, admin tools, payments and notifications.','Helpful details: what customers book, locations/routes, schedules, pricing rules, booking steps and staff/admin roles.'],
+  'Custom software or dashboard': ['A tailored system for your business operations.','We first map your workflow, users, permissions, records, reports and the tasks the software should automate.','Helpful details: what problem it solves, who will use it, current process, key screens/reports and any existing system to connect.'],
+  'Payment integration': ['Connect a payment provider to your website or platform.','We can assess hosted checkout, payment links, cards, mobile money, bank options, payment status callbacks and reconciliation.','Helpful details: provider name, countries/currencies, payment methods, whether you already have a merchant account and the platform to connect.'],
+  'Customer support or automation': ['Make customer support and routine tasks easier.','We can plan enquiry capture, support workflows, FAQs, ticket routing, notifications and human handover.','Helpful details: where customers contact you, common questions, team workflow, operating hours and what should be automated.'],
+  '24/7 Website AI Assistant': ['An AI assistant that helps website visitors even when your team is offline.','We can plan its knowledge sources, answers, lead capture, escalation to a human and usage controls.','Helpful details: website URL, business information/FAQs, languages, common questions and when it should hand over to staff.'],
+  'WhatsApp AI Assistant': ['An AI-powered assistant for customer conversations on WhatsApp.','We can assess WhatsApp Business Platform access, approved message templates, AI responses, lead capture and human handover.','Helpful details: business use case, WhatsApp Business number/status, expected message volume and the tasks it should handle.'],
+  'AI + business automation': ['Connect AI with repetitive business processes.','We can map triggers, connected apps, approvals, data flow, notifications and safeguards before recommending an approach.','Helpful details: tasks to automate, tools/apps you use, what starts each task and what result you expect.'],
+  'Bulk SMS / Sender ID integration': ['Send customer updates or campaigns through an SMS provider.','We can discuss provider selection, Sender ID application, contact-list handling, delivery reports and SMS credits. Sender ID approval and messaging fees depend on the provider and country.','Helpful details: target countries, estimated messages per month, message purpose, preferred provider and whether you already have an approved Sender ID.'],
+  'WhatsApp Business integration': ['Connect WhatsApp Business to your customer journey.','We can scope click-to-chat, catalogue or enquiry flows, approved templates, API integration and support handover.','Helpful details: business number, country, expected message volume and whether you need simple chat links or API automation.'],
+  'Domain registration / transfer': ['Register a new domain or move an existing one.','We can check the domain name, extension, ownership, DNS requirements and transfer eligibility. Domain registration and renewal are separate third-party costs.','Helpful details: preferred domain name, extension (.com, .co.ke, etc.), whether it is already registered and who currently manages it.'],
+  'Website hosting / deployment': ['Publish your website or move it to suitable hosting.','We can review the site technology, traffic needs, deployment process, backups, SSL and ongoing hosting costs.','Helpful details: current website/repository URL, domain, current host, expected traffic and any deployment errors.'],
+  'Business email / DNS setup': ['Set up professional email and the domain records it needs.','We can help configure mailboxes or a provider and the required DNS records, including SPF, DKIM and DMARC where supported.','Helpful details: domain name, email provider, number of mailboxes and whether email is new or being migrated.'],
+  'Payment gateway / checkout integration': ['Add a secure checkout experience to your website or app.','We can compare suitable providers and integrate their supported checkout/API flow. Provider onboarding, transaction fees and settlement approval remain with the provider.','Helpful details: business country, customer countries, currencies, payment methods, website platform and merchant-account status.'],
+  'Advertising & customer acquisition': ['Plan and manage campaigns to attract genuine enquiries and potential customers.','We can discuss audience, platforms, campaign creative, tracking and duration. Our management fee is quoted separately from the advertising budget; results and sales are not guaranteed.','Helpful details: product/service to promote, target location/audience, campaign duration, monthly ad budget, landing page and preferred platforms.'],
+  'Something else': ['Tell us what you have in mind.','We will review your idea and help identify the right service or combination of services.','Helpful details: the problem you want to solve, who it is for and what a successful result would look like.']
+};
+const setServiceGuidance = value => {
+  const guide = serviceGuides[value];
+  if (!serviceGuidance || !guide) {
+    if (serviceGuidance) serviceGuidance.hidden = true;
+    return;
+  }
+  serviceGuidanceTitle.textContent = guide[0];
+  serviceGuidanceDescription.textContent = guide[1];
+  serviceGuidanceNeeded.textContent = guide[2];
+  serviceGuidance.hidden = false;
+};
 const setProjectService = value => {
   if (!serviceSelect || !servicePickerValue || !servicePicker) return;
   serviceSelect.value = value;
   servicePickerValue.textContent = value || 'Choose a service';
+  setServiceGuidance(value);
   servicePicker.setAttribute('aria-expanded', 'false');
   if (servicePickerOptions) servicePickerOptions.hidden = true;
   if (servicePickerError) servicePickerError.hidden = true;
