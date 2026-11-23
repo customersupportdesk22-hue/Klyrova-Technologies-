@@ -24,15 +24,15 @@ if (year) year.textContent = new Date().getFullYear();
 
 const form = document.getElementById('enquiry-form');
 const note = document.getElementById('form-note');
-const CONTACT_EMAIL = 'bahzuri60@gmail.com';
 
 // Preselect the service when a visitor arrives from a service card.
 const projectParams = new URLSearchParams(window.location.search);
 const requestedService = projectParams.get('service');
-const selectedPackage = projectParams.get('package');
-const selectedMarket = projectParams.get('market');
-const selectedPrice = projectParams.get('price');
-const selectedCurrency = projectParams.get('currency') || (selectedMarket === 'Kenya' ? 'KES' : 'USD');
+let selectedPackage = projectParams.get('package');
+let selectedMarket = projectParams.get('market');
+let selectedPrice = projectParams.get('price');
+let selectedCurrency = projectParams.get('currency') || (selectedMarket === 'Kenya' ? 'KES' : 'USD');
+const selectedPackageService = requestedService || '';
 const requestedTemplate = projectParams.get('template');
 const requestedOffer = projectParams.get('offer');
 const templateField = document.getElementById('selected-template');
@@ -59,18 +59,20 @@ if (requestedOffer === 'Klyrova Free Starter' && selectionSummary && freeStarter
   if (introText) introText.textContent = 'Tell us about your business so we can prepare your complimentary starter package. There is no obligation to purchase.';
   const launchOfferField = document.getElementById('launchOffer')?.closest('.full');
   if (launchOfferField) launchOfferField.hidden = true;
-  const budgetField = document.getElementById('budget-field');
-  if (budgetField) budgetField.hidden = true;
   const messageLabel = document.querySelector('label[for="message"]');
   const messageInput = document.getElementById('message');
   if (messageLabel) messageLabel.textContent = 'Tell us about your business and what you want to improve';
   if (messageInput) messageInput.placeholder = 'What does your business do? Do you have a website or social media page? What would you most like help improving?';
 }
 const selectedPackageBox = document.getElementById('selected-package');
-if (selectedPackage && selectedPackageBox) {
-  selectedPackageBox.hidden = false;
-  selectedPackageBox.textContent = `Your selection: ${selectedPackage} · ${selectedMarket || 'To be confirmed'}${selectedPrice ? ` · ${selectedCurrency} ${selectedPrice} starting price` : ''}. First-five-client offer: choose 10% off the development fee or complimentary website launch setup, subject to availability.`;
-}
+const updateSelectedPackageSummary = () => {
+  if (!selectedPackageBox) return;
+  selectedPackageBox.hidden = !selectedPackage;
+  selectedPackageBox.textContent = selectedPackage
+    ? `Homepage selection: ${selectedPackage}${selectedMarket ? ` · ${selectedMarket}` : ''}. The starting price is displayed on the homepage only. We will confirm the final written quotation after reviewing your requirements.`
+    : '';
+};
+updateSelectedPackageSummary();
 const serviceSelect = document.getElementById('service');
 const servicePicker = document.getElementById('service-picker-trigger');
 const servicePickerValue = document.getElementById('service-picker-value');
@@ -81,62 +83,7 @@ const serviceGuidanceTitle = document.getElementById('service-guidance-title');
 const serviceGuidanceDescription = document.getElementById('service-guidance-description');
 const serviceGuidanceNeeded = document.getElementById('service-guidance-needed');
 const advertisingDetails = document.getElementById('advertising-details');
-const budgetField = document.getElementById('budget-field');
-const budgetSelect = document.getElementById('budget');
-const budgetLabel = document.getElementById('budget-label');
-const budgetHint = document.getElementById('budget-hint');
-const budgetChoices = {
-  website: {label:'Estimated website development budget',hint:'This is your expected development budget for the agreed website scope. Domain, hosting and third-party fees may be separate.',options:['Under KES 20,000 / under USD $155','KES 20,000–50,000 / USD $155–385','KES 50,000–100,000 / USD $385–770','Above KES 100,000 / above USD $770']},
-  ecommerce: {label:'Estimated online store development budget',hint:'For store design, catalogue, cart, checkout and agreed management features. Payment-provider fees, domain and hosting may be separate.',options:['Under KES 50,000 / under USD $385','KES 50,000–100,000 / USD $385–770','KES 100,000–250,000 / USD $770–1,925','Above KES 250,000 / above USD $1,925']},
-  booking: {label:'Estimated booking platform development budget',hint:'For booking flows, schedules, customer records and admin tools. SMS, payment-provider, domain and hosting costs may be separate.',options:['Under KES 50,000 / under USD $385','KES 50,000–150,000 / USD $385–1,155','KES 150,000–300,000 / USD $1,155–2,310','Above KES 300,000 / above USD $2,310']},
-  software: {label:'Estimated custom software development budget',hint:'Custom dashboards and software vary with workflows, user roles, integrations and complexity. We confirm the scope before quoting.',options:['Under KES 75,000 / under USD $575','KES 75,000–150,000 / USD $575–1,155','KES 150,000–300,000 / USD $1,155–2,310','Above KES 300,000 / above USD $2,310']},
-  ai: {label:'Estimated AI assistant / automation setup budget',hint:'This is the setup and integration budget. AI usage, WhatsApp fees and other provider charges may recur separately.',options:['Under KES 25,000 / under USD $190','KES 25,000–75,000 / USD $190–575','KES 75,000–150,000 / USD $575–1,155','Above KES 150,000 / above USD $1,155']},
-  integration: {label:'Estimated integration / implementation budget',hint:'For connecting an existing provider or platform. Provider onboarding, transaction fees and subscriptions are separate.',options:['Under KES 15,000 / under USD $115','KES 15,000–40,000 / USD $115–310','KES 40,000–100,000 / USD $310–770','Above KES 100,000 / above USD $770']},
-  sms: {label:'Estimated monthly SMS spend',hint:'This is the amount you expect to spend on SMS messages/credits each month — not the integration or Sender ID setup fee. Provider rates vary by country.',options:['Under KES 5,000 / under USD $40','KES 5,000–20,000 / USD $40–155','KES 20,000–50,000 / USD $155–385','Above KES 50,000 / above USD $385']},
-  domain: {label:'Estimated domain registration budget',hint:'This is an indicative budget for domain registration/transfer. The domain extension and registrar determine the actual price; renewal is recurring.',options:['Under KES 2,000 / under USD $15','KES 2,000–5,000 / USD $15–40','KES 5,000–10,000 / USD $40–80','Above KES 10,000 / above USD $80']},
-  hosting: {label:'Estimated monthly hosting budget',hint:'This is your expected hosting/platform spend per month. Actual costs depend on traffic, storage, compute and provider plan.',options:['Under KES 1,500 / under USD $12','KES 1,500–5,000 / USD $12–40','KES 5,000–15,000 / USD $40–115','Above KES 15,000 / above USD $115']},
-  monitoring: {label:'Estimated website monitoring and maintenance budget',hint:'This is an indicative monthly budget for monitoring setup/support. UptimeRobot plan charges, if any, are separate and depend on the features selected.',options:['Under KES 1,500 / under USD $12','KES 1,500–5,000 / USD $12–40','KES 5,000–15,000 / USD $40–115','Above KES 15,000 / above USD $115']},
-  email: {label:'Estimated monthly business email budget',hint:'This is the expected mailbox/provider subscription spend. Setup and domain costs may be separate.',options:['Under KES 1,000 / under USD $8','KES 1,000–3,000 / USD $8–25','KES 3,000–8,000 / USD $25–60','Above KES 8,000 / above USD $60']},
-  general: {label:'Estimated budget for this service',hint:'Choose the amount you are comfortable allocating to this request. We will confirm the actual scope and quotation with you.',options:['Under KES 20,000 / under USD $155','KES 20,000–50,000 / USD $155–385','KES 50,000–100,000 / USD $385–770','Above KES 100,000 / above USD $770']}
-};
-const getBudgetType = value => {
-  const v = (value || '').toLowerCase();
-  if (v.includes('advertising')) return 'advertising';
-  if (v.includes('bulk sms') || v.includes('sender id')) return 'sms';
-  if (v.includes('monitoring') || v.includes('uptime')) return 'monitoring';
-  if (v.includes('domain')) return 'domain';
-  if (v.includes('hosting') || v.includes('deployment')) return 'hosting';
-  if (v.includes('business email') || v.includes('dns')) return 'email';
-  if (v.includes('e-commerce')) return 'ecommerce';
-  if (v.includes('booking')) return 'booking';
-  if (v.includes('custom software')) return 'software';
-  if (v.includes('ai') || v.includes('automation') || v.includes('customer support')) return 'ai';
-  if (v.includes('payment') || v.includes('whatsapp')) return 'integration';
-  if (v.includes('website')) return 'website';
-  return 'general';
-};
-const setBudgetGuidance = value => {
-  if (!budgetField || !budgetSelect) return;
-  // A customer who selected a package with a displayed starting price has
-  // already provided the budget direction; do not ask them to choose it again.
-  if (selectedPackage && selectedPrice) {
-    budgetField.hidden = true;
-    budgetSelect.value = '';
-    return;
-  }
-  const type = getBudgetType(value);
-  if (type === 'advertising') {
-    budgetField.hidden = true;
-    budgetSelect.value = '';
-    return;
-  }
-  const config = budgetChoices[type] || budgetChoices.general;
-  budgetField.hidden = !value;
-  budgetLabel.innerHTML = config.label + ' <span>(optional)</span>';
-  budgetHint.textContent = config.hint + ' You can choose “Not sure yet — advise me”.';
-  budgetSelect.replaceChildren(new Option('Choose a range',''), ...config.options.map(item => new Option(item,item)), new Option('Not sure yet — advise me','Not sure yet — advise me'));
-  budgetSelect.value = '';
-};
+// Klyrova service prices are displayed on the homepage only.
 const serviceGuides = {
   'Business website': ['A professional website for your organisation.','We can plan the pages, mobile layout, contact forms, WhatsApp links, service or product information and domain connection.','Helpful details: business type, website name (if known), pages needed, examples you like and the main action visitors should take.'],
   'E-commerce website': ['An online store where customers can browse and order.','We can discuss product categories, product pages, cart, checkout, order management, delivery options and payment-provider integration.','Helpful details: approximate number of products, delivery areas, currencies, preferred payment methods and who will manage orders.'],
@@ -171,11 +118,16 @@ const setServiceGuidance = value => {
 };
 const setProjectService = value => {
   if (!serviceSelect || !servicePickerValue || !servicePicker) return;
+  if (selectedPackage && value !== selectedPackageService) {
+    selectedPackage = '';
+    selectedMarket = '';
+    selectedPrice = '';
+    selectedCurrency = '';
+    updateSelectedPackageSummary();
+  }
   serviceSelect.value = value;
   servicePickerValue.textContent = value || 'Choose a service';
   setServiceGuidance(value);
-  setBudgetGuidance(value);
-  if (requestedOffer === 'Klyrova Free Starter' && budgetField) budgetField.hidden = true;
   const launchOffer = document.getElementById('launchOffer');
   const launchOfferLabel = document.getElementById('launch-offer-label');
   const launchOfferHint = document.getElementById('launch-offer-hint');
@@ -251,8 +203,8 @@ form?.addEventListener('submit', event => {
     ['Phone / WhatsApp',data.get('phone')],['Preferred contact',data.get('contactPreference')],
     ['Business',data.get('business')],['Service',data.get('service')],
     ['Selected package',selectedPackage],['Selected template',data.get('template')],['Requested offer',requestedOffer],['Market',selectedMarket],
-    ['Starting price',selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'],
-    ['Launch offer',data.get('launchOffer')],['Budget',data.get('budget')],['Timeline',data.get('timeline')],
+    ['Homepage starting price',selectedPrice ? `${selectedCurrency} ${selectedPrice} (as displayed on homepage)` : ''],
+    ['Launch offer',data.get('launchOffer')],['Timeline',data.get('timeline')],
     ['Website / social link',data.get('promotionLink')],['Advertising platform spend',data.get('adSpendBudget')],
     ['Advertising platform',data.get('adPlatforms')],['Campaign duration',data.get('adDuration')],
     ['Target location',data.get('adLocation')],['Advertising support',data.get('advertisingSupport')],
