@@ -117,6 +117,14 @@ const setServiceGuidance = value => {
   serviceGuidance.hidden = false;
   if (advertisingDetails) advertisingDetails.hidden = value !== 'Advertising & customer acquisition';
 };
+const setMessagePrompt = value => {
+  if (requestedOffer === 'Klyrova Free Starter') return;
+  const guide = serviceGuides[value];
+  const messageLabel = document.querySelector('label[for="message"]');
+  const messageInput = document.getElementById('message');
+  if (messageLabel) messageLabel.textContent = value ? 'Additional details about ' + value.toLowerCase() : 'Project details';
+  if (messageInput) messageInput.placeholder = guide ? guide[2] : 'Describe what you need help with, your goals and any important requirements.';
+};
 const setProjectService = value => {
   if (!serviceSelect || !servicePickerValue || !servicePicker) return;
   if (requestedTemplate && value !== requestedService) {
@@ -135,6 +143,7 @@ const setProjectService = value => {
   serviceSelect.value = value;
   servicePickerValue.textContent = value || 'Choose a service';
   setServiceGuidance(value);
+  setMessagePrompt(value);
   const launchOffer = document.getElementById('launchOffer');
   const launchOfferField = launchOffer?.closest('.full');
   const launchOfferLabel = document.getElementById('launch-offer-label');
@@ -197,6 +206,7 @@ document.addEventListener('keydown', event => {
 
 if (serviceSelect && !servicePicker) {
   serviceSelect.addEventListener('change', () => {
+    setMessagePrompt(serviceSelect.value);
     if (advertisingDetails) advertisingDetails.hidden = serviceSelect.value !== 'Advertising & customer acquisition';
   });
 }
