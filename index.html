@@ -245,16 +245,16 @@
       <div class="market-panel">
         <div class="market-panel-heading"><div><span class="market-kicker">INTERNATIONAL REACH</span><h3>Markets we're open to serving</h3></div><span class="market-globe" aria-hidden="true">◎</span></div>
         <div class="country-flags" aria-label="Choose your country to leave feedback">
-          <button class="country-choice" type="button" data-country="KE" data-dial="+254" aria-label="Select Kenya, country code +254"><i>🇰🇪</i><span>Kenya</span><b>+254</b></button>
-          <button class="country-choice" type="button" data-country="US" data-dial="+1" aria-label="Select United States, country code +1"><i>🇺🇸</i><span>United States</span><b>+1</b></button>
-          <button class="country-choice" type="button" data-country="GB" data-dial="+44" aria-label="Select United Kingdom, country code +44"><i>🇬🇧</i><span>United Kingdom</span><b>+44</b></button>
-          <button class="country-choice" type="button" data-country="CA" data-dial="+1" aria-label="Select Canada, country code +1"><i>🇨🇦</i><span>Canada</span><b>+1</b></button>
-          <button class="country-choice" type="button" data-country="AU" data-dial="+61" aria-label="Select Australia, country code +61"><i>🇦🇺</i><span>Australia</span><b>+61</b></button>
-          <button class="country-choice" type="button" data-country="AE" data-dial="+971" aria-label="Select United Arab Emirates, country code +971"><i>🇦🇪</i><span>United Arab Emirates</span><b>+971</b></button>
-          <button class="country-choice" type="button" data-country="ZA" data-dial="+27" aria-label="Select South Africa, country code +27"><i>🇿🇦</i><span>South Africa</span><b>+27</b></button>
-          <button class="country-choice" type="button" data-country="NG" data-dial="+234" aria-label="Select Nigeria, country code +234"><i>🇳🇬</i><span>Nigeria</span><b>+234</b></button>
-          <button class="country-choice" type="button" data-country="DE" data-dial="+49" aria-label="Select Germany, country code +49"><i>🇩🇪</i><span>Germany</span><b>+49</b></button>
-          <button class="country-choice" type="button" data-country="IN" data-dial="+91" aria-label="Select India, country code +91"><i>🇮🇳</i><span>India</span><b>+91</b></button>
+          <a class="country-choice" href="review.html?country=KE" aria-label="Choose Kenya, country code +254 and share feedback"><i>🇰🇪</i><span>Kenya</span><b>+254</b></a>
+          <a class="country-choice" href="review.html?country=US" aria-label="Choose United States, country code +1 and share feedback"><i>🇺🇸</i><span>United States</span><b>+1</b></a>
+          <a class="country-choice" href="review.html?country=GB" aria-label="Choose United Kingdom, country code +44 and share feedback"><i>🇬🇧</i><span>United Kingdom</span><b>+44</b></a>
+          <a class="country-choice" href="review.html?country=CA" aria-label="Choose Canada, country code +1 and share feedback"><i>🇨🇦</i><span>Canada</span><b>+1</b></a>
+          <a class="country-choice" href="review.html?country=AU" aria-label="Choose Australia, country code +61 and share feedback"><i>🇦🇺</i><span>Australia</span><b>+61</b></a>
+          <a class="country-choice" href="review.html?country=AE" aria-label="Choose United Arab Emirates, country code +971 and share feedback"><i>🇦🇪</i><span>United Arab Emirates</span><b>+971</b></a>
+          <a class="country-choice" href="review.html?country=ZA" aria-label="Choose South Africa, country code +27 and share feedback"><i>🇿🇦</i><span>South Africa</span><b>+27</b></a>
+          <a class="country-choice" href="review.html?country=NG" aria-label="Choose Nigeria, country code +234 and share feedback"><i>🇳🇬</i><span>Nigeria</span><b>+234</b></a>
+          <a class="country-choice" href="review.html?country=DE" aria-label="Choose Germany, country code +49 and share feedback"><i>🇩🇪</i><span>Germany</span><b>+49</b></a>
+          <a class="country-choice" href="review.html?country=IN" aria-label="Choose India, country code +91 and share feedback"><i>🇮🇳</i><span>India</span><b>+91</b></a>
         </div>
         <p class="market-disclaimer">These are priority markets for international enquiries, not a claim of offices or completed projects in every country. Service and payment options are confirmed for each client and location.</p>
       </div>
@@ -266,41 +266,7 @@
             <article class="review-slide review-empty-slide"><span class="review-slide-stars">REVIEWS</span><b>Your experience could be featured here.</b><p>We are inviting clients to share honest feedback. Approved reviews will appear in this horizontal slider.</p></article>
           </div>
         </div>
-        <button class="button button-primary review-open-button" id="review-open-button" type="button" aria-expanded="false" aria-controls="review-form-panel">Share your experience <span>↗</span></button>
-        <div class="review-form-panel" id="review-form-panel" hidden>
-          <div class="review-form-heading"><p class="eyebrow">SHARE YOUR EXPERIENCE</p><h4>Tell us how we did.</h4><p>Choose your country above or select it below. Your review is sent privately to our team for checking before it is published.</p></div>
-          <form class="review-form" id="customer-review-form" method="POST">
-            <input type="hidden" name="_subject" value="New Klyrova website customer review">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" id="review-dial-hidden" name="International dialing code" value="+254">
-            <input type="text" name="_honey" class="review-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <label for="review-name">Your name</label><input id="review-name" name="Customer name" required maxlength="80" placeholder="Your full name">
-            <label for="review-email">Email address</label><input id="review-email" name="Customer email" type="email" required maxlength="120" placeholder="you@example.com">
-            <label for="review-country">Your country</label>
-            <select id="review-country" name="Country" required>
-              <option value="">Choose your country</option>
-              <option value="Kenya" data-dial="+254" data-code="KE">🇰🇪 Kenya (+254)</option>
-              <option value="United States" data-dial="+1" data-code="US">🇺🇸 United States (+1)</option>
-              <option value="United Kingdom" data-dial="+44" data-code="GB">🇬🇧 United Kingdom (+44)</option>
-              <option value="Canada" data-dial="+1" data-code="CA">🇨🇦 Canada (+1)</option>
-              <option value="Australia" data-dial="+61" data-code="AU">🇦🇺 Australia (+61)</option>
-              <option value="United Arab Emirates" data-dial="+971" data-code="AE">🇦🇪 United Arab Emirates (+971)</option>
-              <option value="South Africa" data-dial="+27" data-code="ZA">🇿🇦 South Africa (+27)</option>
-              <option value="Nigeria" data-dial="+234" data-code="NG">🇳🇬 Nigeria (+234)</option>
-              <option value="Germany" data-dial="+49" data-code="DE">🇩🇪 Germany (+49)</option>
-              <option value="India" data-dial="+91" data-code="IN">🇮🇳 India (+91)</option>
-            </select>
-            <label for="review-phone">Phone number</label>
-            <div class="review-phone-row"><span id="review-dial-code" aria-live="polite">+254</span><input id="review-phone" name="Phone number" type="tel" inputmode="tel" autocomplete="tel-national" required maxlength="24" placeholder="Enter your phone number"></div>
-            <label for="review-rating">Your rating</label><select id="review-rating" name="Rating" required><option value="">Select a rating</option><option>5 - Excellent</option><option>4 - Very good</option><option>3 - Good</option><option>2 - Needs improvement</option><option>1 - Poor</option></select>
-            <label for="review-message">Your review</label><textarea id="review-message" name="Customer review" rows="4" maxlength="1200" required placeholder="Tell us about your experience working with Klyrova..."></textarea>
-            <label class="review-consent"><input type="checkbox" name="Feedback contact consent" value="I agree that Klyrova may contact me to verify or respond to this feedback." required><span>I agree that Klyrova may contact me to verify or respond to this feedback.</span></label>
-            <label class="review-consent"><input type="checkbox" name="Publication permission" value="I give permission for Klyrova to publish my review with my name and country after approval."><span><strong>Optional:</strong> I give Klyrova permission to publish my review with my name and country after approval. My phone number and email will not be shown publicly.</span></label>
-            <button class="button button-primary review-submit" type="submit">Send my review <span>↗</span></button>
-            <p class="review-form-privacy">Your phone number and email are for feedback follow-up and verification. They will not be displayed with your public review.</p>
-          </form>
-          <p class="review-form-status" id="review-form-status" role="status" aria-live="polite"></p>
-        </div>
+        <a class="button button-primary review-open-button" href="review.html">Share your experience <span>↗</span></a>
       </div>
     </section>
 
