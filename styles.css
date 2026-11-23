@@ -353,3 +353,24 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .inside-klyrova-visual img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;box-shadow:0 20px 50px rgba(8,28,57,.14)}
 .inside-klyrova-visual figcaption{margin-top:10px;color:var(--muted);font-size:10px;line-height:1.6}
 @media(max-width:760px){.inside-klyrova{grid-template-columns:1fr;gap:24px;padding-top:68px;padding-bottom:68px}.inside-klyrova-copy{max-width:600px}.inside-klyrova-visual{display:flex;flex-direction:column;align-items:center}.inside-klyrova-visual img{width:100%;max-width:480px;border-radius:12px}.inside-klyrova-visual figcaption{width:100%;max-width:480px}}
+
+
+/* Pricing clarity and Business Launch Package */
+.pricing-clarity{margin-top:26px;padding:26px;background:#fff;border:1px solid #e1e8f1;border-radius:14px}
+.pricing-clarity-intro{max-width:760px}
+.pricing-clarity-intro h3{font:800 22px Manrope;color:var(--navy);letter-spacing:-.5px;margin:8px 0}
+.pricing-clarity-intro>p:last-child{font-size:12px;line-height:1.8;color:var(--muted);margin:0}
+.pricing-includes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.pricing-includes>div{padding:17px;background:#f4f7fb;border-radius:9px}
+.pricing-includes b{font:700 12px Manrope;color:var(--navy)}
+.pricing-includes b span{color:#168b70;margin-right:6px}
+.pricing-includes p{font-size:11px;line-height:1.75;color:#68778d;margin:8px 0 0}
+.launch-package{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;margin-top:18px;padding:22px;background:#091a39;border-radius:11px;color:#fff}
+.launch-package-label{font-size:9px;letter-spacing:1.6px;font-weight:800;color:#7dd9f4}
+.launch-package h3{font:800 22px Manrope;color:#fff;margin:8px 0}
+.launch-package>div>p{font-size:11px;line-height:1.8;color:#c4d1e4;margin:0}
+.launch-package-note{padding:16px;background:#ffffff12;border:1px solid #ffffff20;border-radius:9px}
+.launch-package-note>b{font:700 12px Manrope;color:#fff}
+.launch-package-note p{font-size:10px;line-height:1.7;color:#c4d1e4;margin:7px 0 13px}
+.launch-package-note .button{font-size:10px;padding:11px 14px}
+@media(max-width:680px){.pricing-clarity{padding:18px}.pricing-includes,.launch-package{grid-template-columns:1fr}.launch-package{padding:18px;gap:16px}.pricing-clarity-intro h3,.launch-package h3{font-size:19px}}
