@@ -298,33 +298,7 @@ reviewCountry?.addEventListener('change', () => {
 // Customer reviews are now submitted to the Klyrova review API.
 const customerReviewForm = document.getElementById('customer-review-form');
 const reviewStatus = document.getElementById('review-form-status');
-const reviewSlider = document.getElementById('review-slider');
-const renderApprovedReviews = async () => {
-  if (!reviewSlider) return;
-  try {
-    const response = await fetch('/api/reviews');
-    if (!response.ok) throw new Error('Could not load reviews');
-    const reviews = await response.json();
-    if (!Array.isArray(reviews) || reviews.length === 0) return;
-    reviewSlider.innerHTML = reviews.map(review => {
-      const article = document.createElement('article');
-      article.className = 'review-slide';
-      const stars = '★'.repeat(Math.max(1, Math.min(5, Number(review.rating) || 0)));
-      const date = review.approvedAt ? new Date(review.approvedAt).toLocaleDateString(undefined,{month:'short',year:'numeric'}) : '';
-      const name = String(review.displayName || 'Klyrova customer');
-      const country = String(review.country || '');
-      const quote = String(review.review || '');
-      const starEl = document.createElement('span'); starEl.className='review-slide-stars'; starEl.textContent=stars;
-      const quoteEl = document.createElement('p'); quoteEl.textContent=quote;
-      const nameEl = document.createElement('b'); nameEl.textContent=name;
-      const metaEl = document.createElement('small'); metaEl.textContent=[country,date].filter(Boolean).join(' · ');
-      article.append(starEl,quoteEl,nameEl,metaEl);
-      return article;
-    });
-  } catch (error) {
-    // Keep the public review area quiet if the review service is temporarily unavailable.
-  }
-};
+// Approved reviews are maintained by the team on this static website. No unavailable API is called.
 customerReviewForm?.addEventListener('submit', async event => {
   event.preventDefault();
   if (!customerReviewForm.reportValidity()) return;
@@ -352,4 +326,3 @@ customerReviewForm?.addEventListener('submit', async event => {
     if(submit) {submit.disabled=false;submit.innerHTML='Send my review <span>↗</span>';}
   }
 });
-renderApprovedReviews();
