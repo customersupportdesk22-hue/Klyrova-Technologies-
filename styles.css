@@ -535,3 +535,40 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 @media(prefers-reduced-motion:reduce){
   .hero::before,.hero::after{animation:none!important}
 }
+
+
+/* Animated code-to-product layer for the hero software visual */
+.software-hero-art .build-code-float{
+  position:absolute;z-index:4;left:-2px;top:32px;width:205px;
+  border:1px solid rgba(149,195,255,.25);border-radius:11px;overflow:hidden;
+  color:#dceaff;background:rgba(7,19,42,.96);
+  box-shadow:0 18px 48px rgba(2,12,30,.38),0 0 28px rgba(53,145,255,.14);
+  animation:buildPanelFloat 8s ease-in-out infinite;
+}
+.build-code-head{height:30px;display:flex;align-items:center;gap:8px;padding:0 10px;background:#142b4c;border-bottom:1px solid rgba(155,190,230,.13)}
+.build-code-head>span{display:flex;gap:3px}.build-code-head>span i{width:5px;height:5px;border-radius:50%;background:#6684a9}
+.build-code-head>b{font:600 8px "DM Sans";color:#d8e7fb}.build-code-head>small{margin-left:auto;font:700 6px "DM Sans";letter-spacing:.7px;color:#5bd6ad}
+.build-code-body{padding:9px 10px 7px;display:grid;gap:6px;font:500 7px/1.35 ui-monospace,monospace;white-space:nowrap}
+.build-code-body>span{opacity:0;animation:codeLineAppear .45s ease forwards}
+.build-code-body>span:nth-child(1){animation-delay:.3s}.build-code-body>span:nth-child(2){animation-delay:.7s}.build-code-body>span:nth-child(3){animation-delay:1.1s}.build-code-body>span:nth-child(4){animation-delay:1.5s}.build-code-body>span:nth-child(5){animation-delay:1.9s}
+.build-code-body i{display:inline-block;width:15px;color:#6582a7;font-style:normal;font-size:6px}
+.build-code-body b{font-weight:700}.syntax-blue{color:#78aaff}.syntax-cyan{color:#59d8dc}.build-code-body em{color:#e2c27a;font-style:normal}.build-code-body strong{color:#86d8ad;font-weight:600}
+.build-code-body u{display:inline-block;width:5px;height:9px;vertical-align:-2px;background:#60d7e0;animation:typingCaret .8s steps(2) infinite}
+.build-code-status{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:#0d203c;border-top:1px solid rgba(155,190,230,.12);font:700 5px "DM Sans";letter-spacing:.55px;color:#83a2c8}
+.build-code-status span{color:#69d9b2}.build-code-status span b{display:inline-block;width:5px;height:5px;border-radius:50%;background:#4ce0a5;margin-right:5px;box-shadow:0 0 8px #4ce0a5}
+.build-code-status small{font-size:5px;color:#6cb8ed}
+.build-preview-float{position:absolute;z-index:4;right:-2px;top:37px;display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid #dce9f8;border-radius:9px;background:rgba(255,255,255,.97);color:#172c4b;box-shadow:0 12px 34px rgba(0,18,48,.22);animation:previewFloat 7s ease-in-out infinite}
+.preview-spark{width:27px;height:27px;display:grid;place-items:center;border-radius:7px;background:linear-gradient(145deg,#287cf2,#24c4ce);color:#fff;font-size:14px}
+.build-preview-float b,.build-preview-float small{display:block;white-space:nowrap}.build-preview-float b{font:700 8px Manrope}.build-preview-float small{margin-top:4px;color:#7a8ca6;font:700 5px "DM Sans";letter-spacing:.65px}.build-preview-float>i{font:normal 12px "DM Sans";color:#2783ed;margin-left:3px}
+@keyframes codeLineAppear{to{opacity:1}}
+@keyframes typingCaret{50%{opacity:0}}
+@keyframes buildPanelFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(0deg)}}
+@keyframes previewFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:900px){.software-hero-art .build-code-float{left:0;top:12px;transform:scale(.88);transform-origin:top left}.build-preview-float{right:0;top:14px;transform:scale(.9);transform-origin:top right}}
+@media(max-width:680px){
+ .software-hero-art .build-code-float{left:2px;top:9px;width:158px;transform:scale(.82);transform-origin:top left}
+ .build-code-head{height:25px;padding:0 8px}.build-code-body{padding:7px 8px;gap:5px;font-size:6px}
+ .build-preview-float{right:3px;top:10px;gap:6px;padding:7px 8px;transform:scale(.78);transform-origin:top right}
+ .preview-spark{width:22px;height:22px}.build-preview-float b{font-size:7px}.build-preview-float small{font-size:4px}
+}
+@media(prefers-reduced-motion:reduce){.build-code-float,.build-preview-float,.build-code-body>span{animation:none!important;opacity:1!important}}
