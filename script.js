@@ -213,6 +213,8 @@ form?.addEventListener('submit', event => {
     ['Starting price',selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'],
     ['Launch offer',data.get('launchOffer')],['Budget',data.get('budget')],['Timeline',data.get('timeline')],
     ['Website / social link',data.get('promotionLink')],['Advertising platform spend',data.get('adSpendBudget')],
+    ['Advertising platform',data.get('adPlatforms')],['Campaign duration',data.get('adDuration')],
+    ['Target location',data.get('adLocation')],['Advertising support',data.get('advertisingSupport')],
     ['Promotion details',data.get('promotionMaterial')],['Project details',data.get('message')]
   ];
   const message='Hello Klyrova Technologies, I would like to make an enquiry.\n\n'+fields.filter(([,v])=>v!==null&&v!==undefined&&String(v).trim()!=='').map(([k,v])=>`${k}: ${v}`).join('\n');
