@@ -168,6 +168,7 @@ const setProjectService = value => {
   servicePickerValue.textContent = value || 'Choose a service';
   setServiceGuidance(value);
   setBudgetGuidance(value);
+  if (requestedOffer === 'Klyrova Free Starter' && budgetField) budgetField.hidden = true;
   const launchOffer = document.getElementById('launchOffer');
   const launchOfferLabel = document.getElementById('launch-offer-label');
   const launchOfferHint = document.getElementById('launch-offer-hint');
