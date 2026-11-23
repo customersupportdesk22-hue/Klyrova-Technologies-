@@ -374,3 +374,16 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .launch-package-note p{font-size:10px;line-height:1.7;color:#c4d1e4;margin:7px 0 13px}
 .launch-package-note .button{font-size:10px;padding:11px 14px}
 @media(max-width:680px){.pricing-clarity{padding:18px}.pricing-includes,.launch-package{grid-template-columns:1fr}.launch-package{padding:18px;gap:16px}.pricing-clarity-intro h3,.launch-package h3{font-size:19px}}
+
+
+/* Inline service picker: avoids the Android full-screen native select dialog */
+.service-field{position:relative;min-width:0}
+.service-picker-trigger{width:100%;min-height:43px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid #dfe6ef;border-radius:4px;background:#fff;color:#7a8799;font:12px "DM Sans",sans-serif;text-align:left;cursor:pointer}
+.service-picker-trigger[aria-expanded="true"],.service-picker-trigger:focus-visible{border-color:#5b9bfa;box-shadow:0 0 0 3px #5b9bfa1a;outline:none}
+.service-picker-trigger #service-picker-value{color:var(--ink)}
+.service-picker-chevron{font-size:18px;color:#64758d;line-height:1}
+.service-picker-options{position:absolute;z-index:30;top:calc(100% + 5px);left:0;right:0;max-height:260px;overflow-y:auto;padding:6px;background:#fff;border:1px solid #dfe6ef;border-radius:8px;box-shadow:0 14px 35px #102d4926}
+.service-picker-options[hidden]{display:none}
+.service-picker-options button{display:block;width:100%;padding:11px 12px;border:0;border-radius:5px;background:#fff;color:#263852;font:500 12px "DM Sans",sans-serif;text-align:left;cursor:pointer}
+.service-picker-options button:hover,.service-picker-options button:focus-visible{background:#eef5ff;color:#1768e8;outline:none}
+.service-picker-error{margin:7px 0 0;color:#c33c4b;font-size:10px}
