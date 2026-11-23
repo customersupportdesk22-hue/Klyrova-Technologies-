@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Share your experience with Klyrova Technologies.">
+<meta name="theme-color" content="#08152f"><title>Share Your Experience | Klyrova Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/klyrova-icon.svg"><link rel="stylesheet" href="styles.css">
+<script src="navigation.js" defer></script><script src="review.js" defer></script></head>
+<body class="review-page">
+<header class="site-header"><a class="brand" href="index.html" aria-label="Klyrova Technologies home"><img class="brand-logo" src="assets/klyrova-logo.svg" alt="Klyrova Technologies"></a>
+<nav class="nav" aria-label="Main navigation"><a href="index.html#services">Services</a><a href="integrations.html">Integrations</a><a href="index.html#work">Our work</a><a href="index.html#pricing">Pricing</a><a href="index.html#contact">Contact</a><a class="nav-cta" href="index.html">Back to website <span>↗</span></a></nav></header>
+<main class="review-page-main"><div class="review-page-shell">
+<a class="review-back-link" href="index.html#worldwide">← Back to Klyrova website</a>
+<div class="review-page-intro"><p class="eyebrow">CUSTOMER FEEDBACK</p><h1>Share your experience.</h1><p>Your honest feedback helps us improve. Reviews are sent privately to our team for checking. We will only publish a review with your permission.</p></div>
+<section class="review-form-panel review-page-card" aria-labelledby="review-form-title"><div class="review-form-heading"><p class="eyebrow">YOUR FEEDBACK MATTERS</p><h2 id="review-form-title">Tell us how we did.</h2><p>Complete the details below. Your phone number and email are used for follow-up and verification, not shown publicly.</p></div>
+<form class="review-form" id="customer-review-form" novalidate>
+<input type="hidden" id="review-dial-hidden" name="International dialing code" value="+254">
+<label for="review-name">Your name</label><input id="review-name" name="Customer name" required maxlength="80" placeholder="Your full name" autocomplete="name">
+<label for="review-email">Email address</label><input id="review-email" name="Customer email" type="email" required maxlength="120" placeholder="you@example.com" autocomplete="email">
+<label for="review-country">Your country</label><select id="review-country" name="Country" required>
+<option value="">Choose your country</option>
+<option value="Kenya" data-dial="+254" data-code="KE">🇰🇪 Kenya (+254)</option>
+<option value="United States" data-dial="+1" data-code="US">🇺🇸 United States (+1)</option>
+<option value="United Kingdom" data-dial="+44" data-code="GB">🇬🇧 United Kingdom (+44)</option>
+<option value="Canada" data-dial="+1" data-code="CA">🇨🇦 Canada (+1)</option>
+<option value="Australia" data-dial="+61" data-code="AU">🇦🇺 Australia (+61)</option>
+<option value="United Arab Emirates" data-dial="+971" data-code="AE">🇦🇪 United Arab Emirates (+971)</option>
+<option value="South Africa" data-dial="+27" data-code="ZA">🇿🇦 South Africa (+27)</option>
+<option value="Nigeria" data-dial="+234" data-code="NG">🇳🇬 Nigeria (+234)</option>
+<option value="Germany" data-dial="+49" data-code="DE">🇩🇪 Germany (+49)</option>
+<option value="India" data-dial="+91" data-code="IN">🇮🇳 India (+91)</option>
+</select>
+<label for="review-phone">Phone number</label><div class="review-phone-row"><span id="review-dial-code" aria-live="polite">+254</span><input id="review-phone" name="Phone number" type="tel" inputmode="tel" autocomplete="tel-national" required maxlength="24" placeholder="Enter your phone number"></div>
+<label for="review-rating">Your rating</label><select id="review-rating" name="Rating" required><option value="">Select a rating</option><option>5 - Excellent</option><option>4 - Very good</option><option>3 - Good</option><option>2 - Needs improvement</option><option>1 - Poor</option></select>
+<label for="review-message">Your review</label><textarea id="review-message" name="Customer review" rows="4" maxlength="1200" required placeholder="Tell us about your experience working with Klyrova..."></textarea>
+<label class="review-consent"><input type="checkbox" name="Feedback contact consent" value="I agree that Klyrova may contact me to verify or respond to this feedback." required><span>I agree that Klyrova may contact me to verify or respond to this feedback.</span></label>
+<label class="review-consent"><input type="checkbox" name="Publication permission" value="I give permission for Klyrova to publish my review with my name and country after approval."><span><strong>Optional:</strong> I give Klyrova permission to publish my review with my name and country after approval. My phone number and email will not be shown publicly.</span></label>
+<button class="button button-primary review-submit" type="submit">Send my review <span>↗</span></button>
+<p class="review-form-privacy">Your phone number and email are for feedback follow-up and verification. They will not be displayed with your public review.</p>
+</form><p class="review-form-status" id="review-form-status" role="status" aria-live="polite"></p></section>
+<p class="review-page-footnote">Thank you for taking the time to share genuine feedback with Klyrova Technologies.</p></div></main>
+<footer class="review-page-footer"><a class="brand" href="index.html"><img class="brand-logo" src="assets/klyrova-logo.svg" alt="Klyrova Technologies"></a><span>Digital products built for business.</span><a href="index.html">Return to homepage</a></footer>
+<a class="review-whatsapp" href="https://wa.me/254743993329" target="_blank" rel="noopener" aria-label="Chat with Klyrova on WhatsApp">WhatsApp</a>
+</body></html>
