@@ -18,6 +18,17 @@
 .project-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:24px;align-items:start}.project-aside{background:#071329;color:#fff;border-radius:18px;padding:32px;position:sticky;top:24px;overflow:hidden}.project-aside:after{content:"◎";position:absolute;right:-12px;top:30px;font-size:150px;color:#2778ef;opacity:.15}.project-aside h2{font:700 25px/1.2 Manrope;margin:0 0 14px;position:relative}.project-aside>p{font-size:12px;line-height:1.8;color:#bdcbe0;position:relative}.project-steps{list-style:none;padding:12px 0 0;margin:0;position:relative}.project-steps li{display:flex;gap:13px;padding:15px 0;border-top:1px solid #ffffff20}.project-steps b{color:#62d9e8;font-size:11px}.project-steps span{font-size:11px;color:#d9e4f3;line-height:1.6}.aside-contact{display:block;margin-top:23px;color:#78ddeb;font-size:12px;font-weight:700;text-decoration:none}
 .project-form{background:#fff;border:1px solid #e6edf7;border-radius:18px;padding:34px;box-shadow:0 25px 70px #0b285312;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.project-form .full{grid-column:1/-1}.project-form label{display:block;font-size:11px;font-weight:700;color:#30415c;margin:13px 0 7px}.project-form input,.project-form select,.project-form textarea{width:100%;border:1px solid #dce5f0;border-radius:8px;padding:13px 14px;font:13px "DM Sans";color:#14243d;background:#fff;outline:none}.project-form input:focus,.project-form select:focus,.project-form textarea:focus{border-color:#4289f4;box-shadow:0 0 0 3px #4289f41a}.project-form textarea{resize:vertical}.project-form .submit-button{margin-top:20px;width:100%}.project-consent{display:flex!important;align-items:flex-start;gap:10px;line-height:1.6}.project-consent input{width:auto!important;flex:none;margin-top:2px}.project-form .form-note{font-size:10px;line-height:1.7;color:#7b8799}.service-guidance{margin-top:12px;padding:15px 16px;border:1px solid #cfe0fa;border-radius:10px;background:#f3f7ff;color:#203a5e}.service-guidance strong{display:block;font-size:12px;color:#145fc8;margin-bottom:6px}.service-guidance p{font-size:12px;line-height:1.65;margin:0 0 7px}.service-guidance small{display:block;font-size:11px;line-height:1.65;color:#536783}.project-footer{text-align:center;color:#8390a3;font-size:10px;margin-top:25px}
 @media(max-width:760px){.project-page{padding:36px 17px 60px}.project-top{margin-bottom:35px}.project-layout{grid-template-columns:1fr}.project-aside{position:relative;top:auto;padding:25px}.project-form{padding:22px;grid-template-columns:1fr}.project-form .full{grid-column:auto}.project-intro{text-align:left}.project-intro h1{letter-spacing:-1.6px}}
+
+.selection-summary{max-width:900px;margin:0 auto 25px;padding:24px 28px;border:1px solid #cfe0f7;border-radius:15px;background:linear-gradient(135deg,#f1f7ff,#fff);box-shadow:0 12px 34px rgba(22,72,130,.07)}
+.selection-summary[hidden],.selection-summary [hidden]{display:none!important}
+.selection-summary-label{margin:0 0 8px;color:#1674e8;font-size:9px;font-weight:800;letter-spacing:1.5px}
+.selection-summary h2{margin:0 0 9px;color:#071b3a;font:800 22px/1.2 Manrope,sans-serif}
+.selection-summary p:not(.selection-summary-label){margin:0;color:#52647c;font-size:12px;line-height:1.75}
+.selection-summary ul{display:grid;gap:7px;margin:13px 0;padding:0;list-style:none}
+.selection-summary li{position:relative;padding-left:22px;color:#405570;font-size:12px;line-height:1.65}
+.selection-summary li:before{content:"✓";position:absolute;left:0;color:#078b78;font-weight:800}
+.selection-summary small{display:block;margin-top:12px;padding-top:12px;border-top:1px solid #dce7f5;color:#718097;font-size:10px;line-height:1.7}
+@media(max-width:760px){.selection-summary{padding:20px 17px;margin-bottom:18px}.selection-summary h2{font-size:20px}}
 </style>
   <script src="navigation.js" defer></script>
   <script src="motion.js" defer></script>
@@ -30,9 +41,29 @@
 <main class="project-page">
 <div class="project-wrap">
 <div class="project-intro"><p class="eyebrow">LET'S BUILD SOMETHING USEFUL</p><h1>Tell us about your <span>project.</span></h1><p>Share a few details about what you want to create. We'll review your requirements and get back to you to discuss the right scope, timeline and quotation.</p></div>
+<section class="selection-summary" id="selection-summary" aria-live="polite" hidden>
+  <div id="template-selection-summary" hidden>
+    <p class="selection-summary-label">YOUR DESIGN SELECTION</p>
+    <h2 id="template-selection-title">Your selected design</h2>
+    <p id="template-selection-description">We will use this as the starting point for your project. The final website will be tailored to your brand and requirements.</p>
+  </div>
+  <div id="free-starter-selection-summary" hidden>
+    <p class="selection-summary-label">COMPLIMENTARY · LIMITED TO 20 ELIGIBLE BUSINESSES</p>
+    <h2>Klyrova Free Starter</h2>
+    <p>Complete this short form to request your free business starter package. It includes:</p>
+    <ul>
+      <li>A 15-minute discovery conversation.</li>
+      <li>A quick review of your existing website or online presence, with up to five practical improvement points.</li>
+      <li>A professional business profile description of up to 100 words.</li>
+      <li>Five practical ideas to help more people discover your business.</li>
+    </ul>
+    <small>One package per eligible business, while the first 20 places remain available. No purchase is required. Website development, custom graphics, domains, hosting, paid advertising, integrations and ongoing support are not included.</small>
+  </div>
+</section>
 <div class="project-layout">
 <aside class="project-aside"><h2>A clear start makes a better project.</h2><p>You don't need a complete plan or technical knowledge. Tell us what your business needs and we'll help you shape the next steps.</p><ul class="project-steps"><li><b>01</b><span>We review your idea and requirements.</span></li><li><b>02</b><span>We discuss scope, budget and timeline.</span></li><li><b>03</b><span>You receive a clear quotation before work begins.</span></li></ul><a class="aside-contact" href="https://wa.me/254743993329" target="_blank" rel="noopener">Prefer WhatsApp? Chat with us ↗</a></aside>
-<form class="project-form" id="enquiry-form">\n<input type="hidden" id="selected-template" name="template" value="">
+<form class="project-form" id="enquiry-form">
+<input type="hidden" id="selected-template" name="template" value="">
 <div><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required placeholder="Full name"></div>
 <div><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
 <div class="full"><label for="business">Business or organisation <span>(optional)</span></label><input id="business" name="business" maxlength="120" placeholder="Business name"></div>
