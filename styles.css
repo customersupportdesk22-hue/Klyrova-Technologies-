@@ -428,3 +428,6 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 /* Service-specific budget selector guidance */
 #budget-field[hidden]{display:none!important}
 .budget-hint{margin:7px 0 0;color:#718096;font-size:10px;line-height:1.65}
+
+/* Customer enquiry form accessibility and consent controls */
+.contact-form .form-consent{display:flex;align-items:flex-start;gap:10px;font-size:11px;line-height:1.6;color:#53627a;margin:14px 0}.contact-form .form-consent input{width:auto;flex:none;margin:2px 0 0;accent-color:#2879ed}
