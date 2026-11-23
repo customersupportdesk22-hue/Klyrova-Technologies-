@@ -3,6 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
+const crypto = require('crypto');
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -12,6 +13,7 @@ const ADMIN_TOKEN = process.env.REVIEW_ADMIN_TOKEN;
 const EMAIL_TO = process.env.REVIEW_NOTIFICATION_EMAIL || 'bahzuri60@gmail.com';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_FROM = process.env.RESEND_FROM;
+const COMMAND_CENTRE_ADMIN_TOKEN = process.env.COMMAND_CENTRE_ADMIN_TOKEN;
 
 app.disable('x-powered-by');
 app.set('trust proxy', 1);
@@ -35,6 +37,16 @@ function rateLimit(req,res,next){
   if(current && now-current.started<60*60*1000 && current.count>=5) return res.status(429).json({error:'Too many submissions. Please try again later.'});
   if(!current || now-current.started>=60*60*1000) attempts.set(key,{started:now,count:1});
   else current.count++;
+  next();
+}
+function commandCentreOnly(req,res,next){
+  if(!COMMAND_CENTRE_ADMIN_TOKEN) return res.status(503).json({error:'Command Centre access is not configured yet.'});
+  const supplied=(req.headers.authorization||'').replace(/^Bearer\\s+/i,'');
+  const expectedBuffer=Buffer.from(COMMAND_CENTRE_ADMIN_TOKEN);
+  const suppliedBuffer=Buffer.from(supplied);
+  if(!supplied || suppliedBuffer.length!==expectedBuffer.length || !crypto.timingSafeEqual(suppliedBuffer,expectedBuffer)) {
+    return res.status(401).json({error:'Command Centre access denied.'});
+  }
   next();
 }
 function adminOnly(req,res,next){
@@ -67,6 +79,24 @@ async function sendNotification(review){
   });
   if(!response.ok) throw new Error('Review notification email failed: '+response.status);
 }
+app.get('/api/admin/system-health',commandCentreOnly,async(req,res)=>{
+  let databaseStatus='connected';
+  try {
+    await mongoClient.db(DB_NAME).command({ping:1});
+  } catch(error) {
+    databaseStatus='unavailable';
+    console.error('Command Centre database health check failed:',error.message);
+  }
+  const memory=process.memoryUsage();
+  res.json({
+    ok:databaseStatus==='connected',
+    service:'Klyrova Technologies',
+    application:{status:'running',uptimeSeconds:Math.floor(process.uptime()),nodeVersion:process.version},
+    database:{status:databaseStatus},
+    memory:{rssMb:Math.round(memory.rss/1024/1024),heapUsedMb:Math.round(memory.heapUsed/1024/1024)},
+    checkedAt:new Date().toISOString()
+  });
+});
 app.get('/api/health',(req,res)=>res.json({ok:true,service:'Klyrova review service'}));
 app.post('/api/reviews',rateLimit,async(req,res)=>{
   try{
