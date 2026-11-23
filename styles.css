@@ -586,3 +586,10 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .free-starter-card>a{display:inline-flex;margin-top:18px;color:#087cf0;font-weight:800;text-decoration:none}
 .free-starter-card>a span{margin-left:8px}
 @media(max-width:760px){.template-invitation{grid-template-columns:1fr;gap:25px}.free-starter-card{border-radius:16px}}
+
+
+/* Klyrova Free Starter benefit list */
+.free-starter-benefits{display:grid;gap:9px;margin:13px 0 16px;padding:0;list-style:none}
+.free-starter-benefits li{position:relative;padding-left:22px;color:#52657e;font-size:12px;line-height:1.65}
+.free-starter-benefits li::before{content:"✓";position:absolute;left:0;top:0;color:#078b78;font-weight:800}
+.free-starter-card small{font-size:10px;line-height:1.7}
