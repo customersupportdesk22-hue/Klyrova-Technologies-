@@ -472,3 +472,66 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
  .motion-ready [data-reveal]{opacity:1!important;transform:none!important;will-change:auto!important}
 }
+
+
+/* Cinematic blue/cyan ambient lighting — homepage hero only */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background-color:#fbfdff;
+}
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:50%;
+  filter:blur(18px);
+  transform:translate3d(0,0,0);
+}
+.hero::before{
+  width:min(72vw,850px);
+  height:min(72vw,850px);
+  top:-48%;
+  right:-15%;
+  opacity:.58;
+  background:
+    radial-gradient(ellipse at 35% 42%,rgba(64,151,255,.22) 0,rgba(64,151,255,.10) 27%,transparent 66%),
+    radial-gradient(ellipse at 72% 62%,rgba(36,211,222,.17) 0,transparent 58%);
+  animation:heroBlueAura 19s ease-in-out infinite alternate;
+}
+.hero::after{
+  width:min(58vw,650px);
+  height:min(58vw,650px);
+  left:-24%;
+  bottom:-58%;
+  opacity:.42;
+  background:radial-gradient(ellipse,rgba(48,183,222,.16) 0,rgba(67,139,242,.09) 35%,transparent 70%);
+  animation:heroCyanAura 23s ease-in-out infinite alternate;
+}
+.hero-copy,.hero-art{
+  position:relative;
+  z-index:1;
+}
+.software-hero-art{
+  box-shadow:0 28px 85px rgba(7,25,57,.20),0 0 70px rgba(49,139,247,.10);
+}
+@keyframes heroBlueAura{
+  0%{transform:translate3d(0,0,0) scale(.94)}
+  50%{transform:translate3d(-4%,5%,0) scale(1.04)}
+  100%{transform:translate3d(3%,9%,0) scale(1.08)}
+}
+@keyframes heroCyanAura{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(5%,-5%,0) scale(1.08)}
+  100%{transform:translate3d(9%,-2%,0) scale(.96)}
+}
+@media(max-width:680px){
+  .hero::before{width:115vw;height:115vw;top:-25%;right:-42%;opacity:.48}
+  .hero::after{width:95vw;height:95vw;left:-48%;bottom:-28%;opacity:.34}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero::before,.hero::after{animation:none!important}
+}
