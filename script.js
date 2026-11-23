@@ -190,6 +190,12 @@ document.addEventListener('keydown', event => {
   }
 });
 
+if (serviceSelect && !servicePicker) {
+  serviceSelect.addEventListener('change', () => {
+    setBudgetGuidance(serviceSelect.value);
+    if (advertisingDetails) advertisingDetails.hidden = serviceSelect.value !== 'Advertising & customer acquisition';
+  });
+}
 form?.addEventListener('submit', event => {
   event.preventDefault();
   if (serviceSelect && !serviceSelect.value) {
@@ -198,14 +204,20 @@ form?.addEventListener('submit', event => {
     return;
   }
   if (!form.reportValidity()) return;
-
   const data = new FormData(form);
-  const subject = encodeURIComponent(`Website project enquiry — ${data.get('name')}`);
-  const body = encodeURIComponent(
-    `Selected package: ${selectedPackage || 'Not selected'}\nMarket: ${selectedMarket || 'Not specified'}\nStarting price: ${selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'}\nLaunch offer preference: ${data.get('launchOffer') || 'Customer to choose'}\nName: ${data.get('name')}\nEmail: ${data.get('email')}\nBusiness: ${data.get('business') || 'Not provided'}\nBudget: ${data.get('budget') || 'Not specified'}\nService: ${data.get('service')}\nWebsite/social/listing link: ${data.get('promotionLink') || 'Not provided'}\nAdvertising support: ${data.get('advertisingSupport') || 'Not applicable'}\nEstimated advertising platform spend: ${data.get('adSpendBudget') || 'Not specified'}\nPromotion details: ${data.get('promotionMaterial') || 'Not provided'}\n\nProject details:\n${data.get('message')}`
-  );
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-  if (note) note.textContent = 'Your email application should open with your enquiry ready to send. This form does not submit directly to a server.';
+  const fields = [
+    ['Name',data.get('name')],['Email',data.get('email')],['Country',data.get('country')],
+    ['Phone / WhatsApp',data.get('phone')],['Preferred contact',data.get('contactPreference')],
+    ['Business',data.get('business')],['Service',data.get('service')],
+    ['Selected package',selectedPackage],['Market',selectedMarket],
+    ['Starting price',selectedPrice ? `${selectedCurrency} ${selectedPrice}` : 'To be quoted'],
+    ['Launch offer',data.get('launchOffer')],['Budget',data.get('budget')],['Timeline',data.get('timeline')],
+    ['Website / social link',data.get('promotionLink')],['Advertising platform spend',data.get('adSpendBudget')],
+    ['Promotion details',data.get('promotionMaterial')],['Project details',data.get('message')]
+  ];
+  const message='Hello Klyrova Technologies, I would like to make an enquiry.\n\n'+fields.filter(([,v])=>v!==null&&v!==undefined&&String(v).trim()!=='').map(([k,v])=>`${k}: ${v}`).join('\n');
+  if(note) note.textContent='Opening WhatsApp with your enquiry. Review the message and tap Send to submit it.';
+  window.open(`https://wa.me/254743993329?text=${encodeURIComponent(message)}`,'_blank','noopener');
 });
 
 // Reveal selected sections as visitors scroll, with a safe fallback when unsupported.
@@ -329,18 +341,13 @@ customerReviewForm?.addEventListener('submit', async event => {
     publicationPermission: Boolean(formData.get('Publication permission'))
   };
   try {
-    const response = await fetch('/api/reviews',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    const result = await response.json().catch(()=>({}));
-    if (!response.ok) throw new Error(result.error || 'We could not submit your review. Please try again.');
-    customerReviewForm.reset();
-    if (reviewDial) reviewDial.textContent='—';
-    if (reviewDialHidden) reviewDialHidden.value='';
-    document.querySelectorAll('.country-choice').forEach(button=>button.classList.remove('is-selected'));
-    if (reviewStatus) reviewStatus.textContent='Thank you. Your review has been received and is awaiting approval. It will appear here only after our team approves it.';
-  } catch (error) {
-    if (reviewStatus) reviewStatus.textContent=error.message || 'Unable to submit right now. Please try again later.';
+    const reviewMessage=['Hello Klyrova Technologies, I would like to submit customer feedback for review.',`Name: ${payload.name}`,`Email: ${payload.email}`,`Country: ${payload.country}`,`Dial code: ${payload.dialCode}`,`Phone: ${payload.phone}`,`Rating: ${payload.rating}`,`Review: ${payload.review}`,`Publication permission: ${payload.publicationPermission?'Granted':'Not granted'}`].join('\n');
+    if(reviewStatus) reviewStatus.textContent='Opening WhatsApp with your feedback. Review the message and tap Send; it will then reach our team privately for approval.';
+    window.open(`https://wa.me/254743993329?text=${encodeURIComponent(reviewMessage)}`,'_blank','noopener');
+  } catch(error) {
+    if(reviewStatus) reviewStatus.textContent='Unable to prepare your review. Please contact us through WhatsApp instead.';
   } finally {
-    if (submit) { submit.disabled=false; submit.innerHTML='Send my review <span>↗</span>'; }
+    if(submit) {submit.disabled=false;submit.innerHTML='Send my review <span>↗</span>';}
   }
 });
 renderApprovedReviews();
