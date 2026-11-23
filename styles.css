@@ -387,3 +387,21 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .service-picker-options button{display:block;width:100%;padding:11px 12px;border:0;border-radius:5px;background:#fff;color:#263852;font:500 12px "DM Sans",sans-serif;text-align:left;cursor:pointer}
 .service-picker-options button:hover,.service-picker-options button:focus-visible{background:#eef5ff;color:#1768e8;outline:none}
 .service-picker-error{margin:7px 0 0;color:#c33c4b;font-size:10px}
+
+ 
+/* Business promotion section — useful even when the customer has no website */
+.promotion-section{background:linear-gradient(135deg,#071329 0%,#0b2450 100%);color:#fff}
+.promotion-inner{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;max-width:1180px;margin:0 auto}
+.promotion-copy .eyebrow{color:#75d9ee}
+.promotion-copy h2{font:800 clamp(30px,4vw,46px)/1.12 Manrope,sans-serif;letter-spacing:-1.5px;color:#fff;margin:12px 0 16px}
+.promotion-copy h2 span{color:#78d9f0}
+.promotion-copy>p:not(.eyebrow){font-size:13px;line-height:1.9;color:#d0dced;max-width:560px;margin:0 0 23px}
+.promotion-copy .button{display:inline-flex;align-items:center;gap:10px}
+.promotion-copy>small{display:block;margin-top:13px;color:#aebfd5;font-size:10px;line-height:1.7}
+.promotion-audiences{display:grid;gap:10px}
+.promotion-audiences article{display:flex;gap:15px;padding:17px 18px;border:1px solid #ffffff20;border-radius:11px;background:#ffffff0b}
+.promotion-audiences article>b{flex:0 0 28px;color:#72d8ee;font:800 11px Manrope}
+.promotion-audiences article strong{display:block;color:#fff;font:700 12px Manrope;margin-bottom:5px}
+.promotion-audiences article span{display:block;color:#c1cee0;font-size:11px;line-height:1.7}
+.promotion-footnote{max-width:1180px;margin:27px auto 0;padding-top:17px;border-top:1px solid #ffffff20;color:#aebfd5;font-size:10px;line-height:1.8}
+@media(max-width:760px){.promotion-inner{grid-template-columns:1fr;gap:26px}.promotion-copy h2{font-size:34px}.promotion-audiences{gap:8px}.promotion-audiences article{padding:14px}}
