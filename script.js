@@ -37,6 +37,35 @@ const requestedTemplate = projectParams.get('template');
 const requestedOffer = projectParams.get('offer');
 const templateField = document.getElementById('selected-template');
 if (templateField && requestedTemplate) templateField.value = requestedTemplate;
+const selectionSummary = document.getElementById('selection-summary');
+const templateSummary = document.getElementById('template-selection-summary');
+const freeStarterSummary = document.getElementById('free-starter-selection-summary');
+if (requestedTemplate && selectionSummary && templateSummary) {
+  selectionSummary.hidden = false;
+  templateSummary.hidden = false;
+  const templateTitle = document.getElementById('template-selection-title');
+  if (templateTitle) templateTitle.textContent = `Your selected design: ${requestedTemplate}`;
+  const introTitle = document.querySelector('.project-intro h1');
+  const introText = document.querySelector('.project-intro > p:last-child');
+  if (introTitle) introTitle.innerHTML = "Let's shape your <span>chosen design.</span>";
+  if (introText) introText.textContent = 'Your chosen design has been added to this enquiry. Tell us a little about your business and we will customise the concept around your brand and requirements.';
+}
+if (requestedOffer === 'Klyrova Free Starter' && selectionSummary && freeStarterSummary) {
+  selectionSummary.hidden = false;
+  freeStarterSummary.hidden = false;
+  const introTitle = document.querySelector('.project-intro h1');
+  const introText = document.querySelector('.project-intro > p:last-child');
+  if (introTitle) introTitle.innerHTML = 'Request your <span>free starter.</span>';
+  if (introText) introText.textContent = 'Tell us about your business so we can prepare your complimentary starter package. There is no obligation to purchase.';
+  const launchOfferField = document.getElementById('launchOffer')?.closest('.full');
+  if (launchOfferField) launchOfferField.hidden = true;
+  const budgetField = document.getElementById('budget-field');
+  if (budgetField) budgetField.hidden = true;
+  const messageLabel = document.querySelector('label[for="message"]');
+  const messageInput = document.getElementById('message');
+  if (messageLabel) messageLabel.textContent = 'Tell us about your business and what you want to improve';
+  if (messageInput) messageInput.placeholder = 'What does your business do? Do you have a website or social media page? What would you most like help improving?';
+}
 const selectedPackageBox = document.getElementById('selected-package');
 if (selectedPackage && selectedPackageBox) {
   selectedPackageBox.hidden = false;
