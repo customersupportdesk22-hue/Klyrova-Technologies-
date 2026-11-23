@@ -405,3 +405,13 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .promotion-audiences article span{display:block;color:#c1cee0;font-size:11px;line-height:1.7}
 .promotion-footnote{max-width:1180px;margin:27px auto 0;padding-top:17px;border-top:1px solid #ffffff20;color:#aebfd5;font-size:10px;line-height:1.8}
 @media(max-width:760px){.promotion-inner{grid-template-columns:1fr;gap:26px}.promotion-copy h2{font-size:34px}.promotion-audiences{gap:8px}.promotion-audiences article{padding:14px}}
+
+ 
+/* Conditional advertising enquiry fields */
+.advertising-details[hidden]{display:none!important}
+.advertising-details{grid-column:1/-1;padding:17px;margin:10px 0 4px;border:1px solid #d9e6f8;border-radius:10px;background:#f7faff}
+.advertising-details label{margin-top:14px}
+.ad-form-note{padding:12px 13px;border-radius:8px;background:#eaf2ff;color:#23446f}
+.ad-form-note strong{display:block;font:700 12px Manrope,sans-serif;color:#155fc3;margin-bottom:5px}
+.ad-form-note p{margin:0;font-size:11px;line-height:1.7}
+@media(max-width:760px){.advertising-details{grid-column:1;padding:14px}}
