@@ -41,7 +41,7 @@ function rateLimit(req,res,next){
 }
 function commandCentreOnly(req,res,next){
   if(!COMMAND_CENTRE_ADMIN_TOKEN) return res.status(503).json({error:'Command Centre access is not configured yet.'});
-  const supplied=(req.headers.authorization||'').replace(/^Bearer\\s+/i,'');
+  const supplied=(req.headers.authorization||'').replace(/^Bearer\s+/i,'');
   const expectedBuffer=Buffer.from(COMMAND_CENTRE_ADMIN_TOKEN);
   const suppliedBuffer=Buffer.from(supplied);
   if(!supplied || suppliedBuffer.length!==expectedBuffer.length || !crypto.timingSafeEqual(suppliedBuffer,expectedBuffer)) {
