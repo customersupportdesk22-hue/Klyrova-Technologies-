@@ -132,6 +132,29 @@ const setProjectService = value => {
   servicePickerValue.textContent = value || 'Choose a service';
   setServiceGuidance(value);
   setBudgetGuidance(value);
+  const launchOffer = document.getElementById('launchOffer');
+  const launchOfferLabel = document.getElementById('launch-offer-label');
+  const launchOfferHint = document.getElementById('launch-offer-hint');
+  if (launchOffer) {
+    const isAdvertising = value === 'Advertising & customer acquisition';
+    if (isAdvertising) {
+      if (launchOfferLabel) launchOfferLabel.textContent = 'First-five-client advertising offer — choose one';
+      if (launchOfferHint) launchOfferHint.textContent = 'Choose 10% off Klyrova’s campaign management fee or complimentary campaign setup. Advertising platform spend is not discounted or included.';
+      launchOffer.replaceChildren(
+        new Option('10% discount on Klyrova campaign management fee','10% discount on Klyrova campaign management fee'),
+        new Option('Complimentary campaign setup (advertising spend excluded)','Complimentary campaign setup (advertising spend excluded)'),
+        new Option('Discuss the available advertising offer with me','Discuss the available advertising offer with me')
+      );
+    } else {
+      if (launchOfferLabel) launchOfferLabel.textContent = 'First-five-client launch offer — choose one';
+      if (launchOfferHint) launchOfferHint.textContent = 'Available to the first five clients who confirm with the agreed deposit. Third-party charges are excluded.';
+      launchOffer.replaceChildren(
+        new Option('10% discount on the project development fee','10% discount on the project development fee'),
+        new Option('Complimentary website launch setup (domain/hosting fees excluded)','Complimentary website launch setup (domain/hosting fees excluded)'),
+        new Option('Discuss the available offer with me','Discuss the available offer with me')
+      );
+    }
+  }
   servicePicker.setAttribute('aria-expanded', 'false');
   if (servicePickerOptions) servicePickerOptions.hidden = true;
   if (servicePickerError) servicePickerError.hidden = true;
