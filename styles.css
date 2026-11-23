@@ -451,3 +451,24 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .review-page-footer .brand-logo{max-width:190px}.review-page-footer>a:last-child{color:#246fce;font-weight:700}
 .review-whatsapp{position:fixed;right:18px;bottom:20px;padding:13px 17px;border-radius:30px;background:#18bd68;color:#fff;font-size:12px;font-weight:800;box-shadow:0 8px 22px #0c6a3d30}
 @media(max-width:680px){.review-page-main{padding:30px 16px 48px}.review-page-card{padding:22px 17px}.review-page-card .review-form{grid-template-columns:1fr;gap:9px}.review-page-card .review-form>label[for="review-message"],.review-page-card .review-form>textarea,.review-page-card .review-consent,.review-page-card .review-submit,.review-page-card .review-form-privacy{grid-column:1}.review-page-footer{flex-wrap:wrap}.review-page-footer .brand-logo{max-width:160px}}
+
+
+/* Klyrova motion system: subtle, fast and accessible */
+.motion-ready [data-reveal]{opacity:0;transform:translate3d(0,22px,0);transition:opacity .72s cubic-bezier(.2,.7,.2,1),transform .72s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms);will-change:opacity,transform}
+.motion-ready [data-reveal="left"]{transform:translate3d(-24px,0,0)}
+.motion-ready [data-reveal="right"]{transform:translate3d(24px,0,0)}
+.motion-ready [data-reveal="scale"]{transform:translate3d(0,12px,0) scale(.97)}
+.motion-ready [data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0) scale(1);will-change:auto}
+.button,.nav a,.project-card,.home-integration-card,.country-choice,.review-page-card,.platform-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background-color .25s ease}
+.button:hover,.nav .nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 26px #1768e82b}
+.project-card:hover,.home-integration-card:hover,.platform-card:hover{transform:translateY(-5px);box-shadow:0 18px 42px #0d2b5714}
+.country-choice:hover{transform:translateY(-2px);box-shadow:0 10px 24px #0d2b5710}
+.brand-logo{transition:transform .3s ease}
+.brand:hover .brand-logo{transform:scale(1.025)}
+.review-page-card{animation:reviewCardEnter .65s cubic-bezier(.2,.7,.2,1) both}
+@keyframes reviewCardEnter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+ .motion-ready [data-reveal]{opacity:1!important;transform:none!important;will-change:auto!important}
+}
