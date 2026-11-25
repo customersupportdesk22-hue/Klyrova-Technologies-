@@ -12,7 +12,10 @@
     ['.home-integration-card','up'],['.country-choice','up'],
     ['.review-page-intro','up'],['.review-page-card','up'],
     ['.project-intro','up'],['.project-aside','left'],['.project-form','right'],
-    ['.platform-hero > *','up'],['.platform-section','up'],['.platform-bottom','up']
+    ['.platform-hero > *','up'],['.platform-section','up'],['.platform-bottom','up'],
+    ['.template-invitation-copy','left'],['.free-starter-card','right'],
+    ['.work-section .section-heading','up'],['.technology-marquee','scale'],
+    ['.promotion-inner','up'],['.promotion-costs article','up'],['.pricing-card','up']
   ];
   const targets = new Set();
   selectors.forEach(([selector, motion]) => {
