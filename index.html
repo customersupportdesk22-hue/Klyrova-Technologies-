@@ -30,7 +30,7 @@
     <section class="hero section" id="home">
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-dot"></span> DIGITAL DEVELOPMENT AGENCY • WEB • SOFTWARE • AUTOMATION</p>
-        <h1>We build digital experiences that <span>move business forward.</span></h1>
+        <h1>We build digital experiences that <span class="hero-rotating-phrase" id="hero-rotating-phrase" aria-live="polite">move business forward.</span></h1>
         <p class="hero-intro">We partner with ambitious businesses to design, build and improve websites, platforms and custom software—wherever they are in the world.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="start-project.html">Discuss your project <span>↗</span></a>
@@ -76,6 +76,16 @@
 
     <section class="trust-strip proof-strip" aria-label="Klyrova project and service commitments">
       <div><strong>06</strong><span>Projects showcased in our portfolio</span></div><div><strong>GLOBAL</strong><span>Kenya-based, open to worldwide clients</span></div><div><strong>CLARITY</strong><span>Agreed scope and milestones in writing</span></div>
+    </section>
+
+    <section class="technology-marquee" aria-label="Technology tools and platforms we work with">
+      <div class="technology-marquee-heading">TOOLS & PLATFORMS WE WORK WITH</div>
+      <div class="technology-marquee-window">
+        <div class="technology-marquee-track">
+          <div class="technology-marquee-group"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>GitHub</span><span>Cloudflare</span><span>Render</span></div>
+          <div class="technology-marquee-group" aria-hidden="true"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>GitHub</span><span>Cloudflare</span><span>Render</span></div>
+        </div>
+      </div>
     </section>
 
     <section class="template-invitation section" aria-labelledby="template-invitation-title">
@@ -124,7 +134,7 @@
         <h2>Technology that works<br>as hard as you do.</h2>
         <p>Practical digital solutions, designed around the way your business actually operates.</p>
       </div>
-      <div class="service-grid">
+      <div class="service-grid auto-carousel" data-carousel="services" aria-label="Our services">
         <article class="service-card"><span class="service-number">01 / WEB</span><div class="service-icon">▧</div><h3>Business websites</h3><p>Professional, responsive websites that explain what you do, build trust and help customers take action.</p><a href="start-project.html?service=Business%20website">Discuss a website <span>↗</span></a></article>
         <article class="service-card"><span class="service-number">02 / COMMERCE</span><div class="service-icon">◇</div><h3>E-commerce</h3><p>Online stores with product catalogues, order flows and suitable payment-provider integrations.</p><a href="start-project.html?service=E-commerce%20website">Build an online store <span>↗</span></a></article>
         <article class="service-card"><span class="service-number">03 / PLATFORMS</span><div class="service-icon">▦</div><h3>Booking platforms</h3><p>Booking and reservation experiences with schedules, customer records and management tools.</p><a href="start-project.html?service=Booking%20platform">Plan a platform <span>↗</span></a></article>
@@ -224,7 +234,7 @@
     <section class="work-section" id="work">
       <div class="section work-inner">
         <div class="section-heading work-heading"><p class="eyebrow">SELECTED PROJECTS</p><h2>Real projects.<br>Practical outcomes.</h2><p>Our work spans property, transport, financial services, commerce, fintech and customer experience. Explore a selection of digital products developed and in progress.</p></div>
-        <div class="project-list">
+        <div class="project-list auto-carousel" data-carousel="projects" aria-label="Selected portfolio projects">
           <article class="project-card">
             <div class="project-visual house-visual"><img class="project-image" src="assets/house-hunt.jpg" alt="House Hunt property platform project preview" loading="lazy"></div>
             <div class="project-info"><div><p class="project-type">PROPERTY • CUSTOMER EXPERIENCE</p><h3>House Hunt</h3><p>A property discovery experience with listings, customer enquiries and agent-side support tools.</p></div><a class="project-link" href="https://house-hunt-server.onrender.com/" target="_blank" rel="noopener">View project ↗</a></div>
@@ -288,11 +298,11 @@
         <p class="market-disclaimer">These are priority markets for international enquiries, not a claim of offices or completed projects in every country. Service and payment options are confirmed for each client and location.</p>
       </div>
       <div class="reviews-panel">
-        <div class="reviews-panel-heading"><div><p class="eyebrow">CUSTOMER REVIEWS</p><h3>Real experiences deserve<br>real voices.</h3></div><span class="review-quote-mark" aria-hidden="true">“</span></div>
+        <div class="reviews-panel-heading"><div><p class="eyebrow">THE KLYROVA EXPERIENCE</p><h3>A clear process.<br>Real accountability.</h3></div><span class="review-quote-mark" aria-hidden="true">“</span></div>
         <div class="review-slider-wrap">
-          <div class="review-slider-head"><span>CLIENT FEEDBACK</span><span class="review-slider-note">Genuine reviews · Shared with permission</span></div>
+          <div class="review-slider-head"><span>OUR CLIENT PROMISES</span><span class="review-slider-note">The standards behind every project</span></div>
           <div class="review-slider" id="review-slider" aria-live="polite">
-            <article class="review-slide review-empty-slide"><span class="review-slide-stars">REVIEWS</span><b>Your experience could be featured here.</b><p>We are inviting clients to share honest feedback. Approved reviews will appear in this horizontal slider.</p></article>
+            <article class="review-slide review-empty-slide"><span class="review-slide-stars">01 / CLARITY</span><b>Know what you are getting.</b><p>We agree on the project scope, deliverables, milestones and costs before development begins.</p></article>
           </div>
         </div>
         <a class="button button-primary review-open-button" href="review.html">Share your experience <span>↗</span></a>
@@ -459,6 +469,7 @@
     <div class="footer-bottom"><span>© <span id="year"></span> Klyrova Technologies. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
   </footer>
   <script src="script.js"></script>
+  <script src="rotations.js"></script>
   <a class="whatsapp-float" href="https://wa.me/254743993329?text=Hello%20Klyrova%20Technologies%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat with Klyrova Technologies on WhatsApp" title="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.04 3.2A12.68 12.68 0 0 0 5.12 22.33L3.4 28.6l6.42-1.68A12.7 12.7 0 1 0 16.04 3.2Zm0 23.1c-2.02 0-4-.54-5.73-1.57l-.41-.24-3.81 1 1.02-3.71-.27-.43a10.38 10.38 0 1 1 9.2 4.95Zm5.7-7.77c-.31-.16-1.84-.91-2.13-1.02-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1 1.23-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.51-1.55-.93-.83-1.56-1.85-1.74-2.16-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.25-.61-.51-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.37 4.75.75.32 1.33.52 1.78.66.75.24 1.43.21 1.97.13.6-.09 1.84-.75 2.1-1.47.26-.73.26-1.34.18-1.47-.08-.13-.29-.21-.6-.37Z"/></svg>
     <span class="whatsapp-hint" aria-hidden="true">Need help? Text us on WhatsApp</span>
