@@ -5,11 +5,11 @@
   const heroPhrase = document.getElementById('hero-rotating-phrase');
   if (heroPhrase && !reduceMotion) {
     const phrases = [
-      'move business forward.',
-      'turn ideas into digital products.',
-      'make everyday work simpler.',
-      'connect customers and businesses.',
-      'bring ambitious ideas to life.'
+      'move businesses forward.',
+      'turn ideas into reality.',
+      'connect brands worldwide.',
+      'simplify everyday work.',
+      'create lasting impact.'
     ];
     let phraseIndex = 0;
     window.setInterval(() => {
