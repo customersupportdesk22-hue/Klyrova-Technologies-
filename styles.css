@@ -593,3 +593,33 @@ a,button,[role="button"],[role="link"],summary{-webkit-tap-highlight-color:trans
 .free-starter-benefits li{position:relative;padding-left:22px;color:#52657e;font-size:12px;line-height:1.65}
 .free-starter-benefits li::before{content:"✓";position:absolute;left:0;top:0;color:#078b78;font-weight:800}
 .free-starter-card small{font-size:10px;line-height:1.7}
+
+
+/* Klyrova motion suite: restrained, touch-friendly and accessible. */
+.hero-rotating-phrase{display:inline-block;transition:opacity .35s ease,transform .35s ease}
+.hero-rotating-phrase.is-changing{opacity:0;transform:translateY(9px)}
+.technology-marquee{overflow:hidden;padding:26px 0 30px;background:linear-gradient(110deg,#071329,#102b53 52%,#071329);color:#fff}
+.technology-marquee-heading{text-align:center;font-size:9px;font-weight:800;letter-spacing:2.2px;color:#8fa9cb;margin-bottom:17px}
+.technology-marquee-window{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.technology-marquee-track{display:flex;width:max-content;animation:klyrovaMarquee 34s linear infinite}
+.technology-marquee:hover .technology-marquee-track{animation-play-state:paused}
+.technology-marquee-group{display:flex;align-items:center;gap:0;flex:none}
+.technology-marquee-group span{display:flex;align-items:center;gap:16px;padding:0 27px;color:#e5efff;font:700 13px Manrope;white-space:nowrap}
+.technology-marquee-group span:after{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px #54d9e6}
+@keyframes klyrovaMarquee{to{transform:translateX(-50%)}}
+.auto-carousel{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#9bbce9 transparent;padding:4px 2px 18px}
+.auto-carousel>*{flex:0 0 clamp(270px,31%,390px);min-width:0;scroll-snap-align:start}
+.service-grid.auto-carousel{gap:16px}
+.project-list.auto-carousel{gap:20px}
+.auto-carousel::-webkit-scrollbar{height:6px}
+.auto-carousel::-webkit-scrollbar-thumb{background:#a9c4e8;border-radius:20px}
+.auto-carousel:focus-visible{outline:3px solid #397dff;outline-offset:4px}
+.review-slider{position:relative;min-height:175px}
+.review-slide{animation:promiseFade .55s ease both}
+.review-slide-stars{display:block;font-size:9px;letter-spacing:1.8px;color:#3282f4;font-weight:800;margin-bottom:17px}
+.review-slide b{display:block;font:800 20px/1.3 Manrope;color:var(--navy);margin-bottom:9px}
+.review-slide p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}
+@keyframes promiseFade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.auto-carousel>*{flex-basis:clamp(270px,45%,390px)}}
+@media(max-width:680px){.technology-marquee{padding:21px 0 24px}.technology-marquee-group span{font-size:11px;padding:0 19px}.auto-carousel>*{flex-basis:min(86vw,360px)}.service-grid.auto-carousel{gap:12px}.project-list.auto-carousel{gap:14px}.review-slider{min-height:190px}}
+@media(prefers-reduced-motion:reduce){.technology-marquee-track{animation:none}.hero-rotating-phrase{transition:none}.auto-carousel{scroll-behavior:auto}.review-slide{animation:none}}
